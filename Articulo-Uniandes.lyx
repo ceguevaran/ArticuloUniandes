@@ -97,7 +97,9 @@ status open
 
 
 \backslash
-author{Carlos E.
+author{
+\backslash
+textbf{Carlos E.
  Guevara N.$^{1}$$^{*}$, César L.
  Niño$^{2}$$^{*}$
 \backslash
@@ -107,7 +109,7 @@ author{Carlos E.
 \backslash
 
 \backslash
- 
+} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -115,7 +117,7 @@ author{Carlos E.
 
 \backslash
 small{$^{1}$M.Sc.
- Ingeniería Electrónica.
+ Ingeniería Electrónica, Profesor de Cátedra.
  carlos.guevara@javeriana.edu.co}
 \backslash
 
@@ -151,6 +153,23 @@ small{$^{*}$ Pontificia Universidad Javeriana, Bogotá D.C, Colombia}
 \begin_layout Plain Layout
 
 }
+\backslash
+
+\backslash
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+small{
+\backslash
+date{Recibido 14 de noviembre de 2014}}
 \end_layout
 
 \end_inset
