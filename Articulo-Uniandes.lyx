@@ -4,6 +4,7 @@
 \begin_header
 \textclass article
 \begin_preamble
+\usepackage[ngerman,french,english]{babel}
 \usepackage{subfigure}
 \usepackage{amsmath}
 \usepackage{apacite}
@@ -172,26 +173,33 @@ small{
 date{Recibido 14 de noviembre de 2014}}
 \end_layout
 
-\end_inset
+\begin_layout Plain Layout
 
 
+\backslash
+providecommand{
+\backslash
+keywordsSP}[1]{
+\backslash
+textbf{
+\backslash
+textit{Palabras clave---}} #1}
 \end_layout
 
-\begin_layout Abstract
-El problema de detección correcta de información transmitida a través de
- ambientes de comunicaciones móviles motiva a desarrollar un
-\emph on
- 
-\emph default
-Ecualizador Espacial
-\emph on
- 
-\emph default
-(SE)
-\emph on
- 
-\emph default
-no lineal y evaluar su desempeño en estas condiciones.
+\begin_layout Plain Layout
+
+
+\backslash
+selectlanguage{spanish}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abstract} El problema de detección correcta de información transmitida
+ a través de ambientes de comunicaciones móviles motiva a desarrollar un
+ Ecualizador Espacial (SE) no lineal y evaluar su desempeño en estas condiciones.
  Para esto se construye la estructura general y se desarrolla un modelo
  matemático que permita el cálculo y actualización de los coeficientes del
  SE no lineal con el fin de garantizar un correcta detección de la información.
@@ -200,17 +208,40 @@ no lineal y evaluar su desempeño en estas condiciones.
  de simulación y con distintas configuraciones de los ecualizadores.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_layout Plain Layout
+
+
+\backslash
+end{abstract}
+\end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-renewcommand{
+keywordsSP{Arreglo de antenas, Canal con desvanecimiento, Comunicaciones
+ móviles, Ecualizador espacial, Filtro adaptativo, Filtro de Volterra, 
+ LMS, MMSE, RLS.}
+\end_layout
+
+\begin_layout Plain Layout
+
+
 \backslash
-abstractname}{Abstract}
+providecommand{
+\backslash
+keywordsEN}[1]{
+\backslash
+textbf{
+\backslash
+textit{Key words---}} #1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+selectlanguage{english}
 \end_layout
 
 \begin_layout Plain Layout
@@ -224,10 +255,18 @@ begin{abstract} Reliable information detection on mobile communications
  equalizer coefficients are developed to achieve the goal of accurately
  detection of transmitted signals.
  Finally the SE performance is compared with the linear equalizer performance
- using different environment conditions and equalizers settings.
+ using different environment  conditions and equalizers settings.
   
 \backslash
 end{abstract}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+keywordsEN{Antenna arrays, Adaptive filter, Fading channel, LMS, MMSE, Mobile
+ communications, RLS, Space equalizer, Volterra filter.}
 \end_layout
 
 \end_inset
