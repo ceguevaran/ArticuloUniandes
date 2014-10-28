@@ -20,7 +20,7 @@
 \font_typewriter default
 \font_math auto
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -82,6 +82,10 @@
 \begin_layout Title
 Evaluación de desempeño de un ecualizador espacial no lineal en ambientes
  de comunicaciones móviles.
+\begin_inset Newline newline
+\end_inset
+
+Non Linear Space Equalizer Performance for Mobile Communications Scenarios.
 \end_layout
 
 \begin_layout Standard
@@ -2041,7 +2045,7 @@ name "BERGG20"
 \begin_inset Graphics
 	filename /Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG20.jpg
 	display false
-	width 50text%
+	width 48text%
 
 \end_inset
 
@@ -2073,7 +2077,7 @@ name "BERGG15"
 \begin_inset Graphics
 	filename /Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG15.jpg
 	display false
-	width 50text%
+	width 48text%
 
 \end_inset
 
@@ -2155,12 +2159,40 @@ Comparación del desempeño de un SE lineal con el SE propuesto utilizando
  diferentes valores de relación señal a ruido por bit (SNR/bit).
  Para este escenario de prueba se utilizó un esquema de modulación BPSK,
  desvanecimiento con distribución de probabilidad Gaussiana con media cero
- y varianza normalizada a uno y ruido aditivo Gaussiano con media cero y
- varianza 
+ y varianza normalizada a uno y se probaron diferentes modelos de ruido
+ aditivo, en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BERGG20"
+
+\end_inset
+
+ se utilizó un modelo de ruido con distribución de probabilidad Gaussiana
+ con media cero y varianza 
 \begin_inset Formula $N_{0}/2$
 \end_inset
 
-.
+, en
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BERGG15"
+
+\end_inset
+
+ se utilizó un modelo de ruido con distribución de probabilidad Gaussiana
+ generalizada con factor de forma 
+\begin_inset Formula $\rho=1.5$
+\end_inset
+
+ y finalmente en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BERGG11"
+
+\end_inset
+
+ se utilizó un de ruido con distribución de probabilidad Gaussiana generalizada
+ con factor de forma 1.
 \end_layout
 
 \end_inset
