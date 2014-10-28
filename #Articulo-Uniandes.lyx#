@@ -179,7 +179,7 @@ date{Recibido 14 de noviembre de 2014}}
 \backslash
 providecommand{
 \backslash
-keywords}[1]{
+keywordsSP}[1]{
 \backslash
 textbf{
 \backslash
@@ -219,9 +219,9 @@ end{abstract}
 
 
 \backslash
-keywords{Arreglo de antenas, Canal con desvanecimiento, Comunicaciones móviles,
- Filtro Adaptativo, Filtro de Volterra,  LMS, MMSE, RLS, Ecualizador Espacial,
- }
+keywordsSP{Arreglo de antenas, Canal con desvanecimiento, Comunicaciones
+ móviles, Ecualizador espacial, Filtro adaptativo, Filtro de Volterra, 
+ LMS, MMSE, RLS.}
 \end_layout
 
 \begin_layout Plain Layout
@@ -230,7 +230,7 @@ keywords{Arreglo de antenas, Canal con desvanecimiento, Comunicaciones móviles,
 \backslash
 providecommand{
 \backslash
-keywordss}[1]{
+keywordsEN}[1]{
 \backslash
 textbf{
 \backslash
@@ -265,8 +265,8 @@ end{abstract}
 
 
 \backslash
-keywordss{Antenna arrays, Adaptive Filter, Fading Channel, LMS, MMSE, Mobile
- Communications, RLS, Space Equalizer, Volterra Filter.}
+keywordsEN{Antenna arrays, Adaptive filter, Fading channel, LMS, MMSE, Mobile
+ communications, RLS, Space equalizer, Volterra filter.}
 \end_layout
 
 \end_inset
@@ -279,23 +279,18 @@ Introducción
 \end_layout
 
 \begin_layout Standard
-El creciente número de sistemas de comunicación móviles y los problemas
- que estos generan en la transmisión y detección de la información, resaltan
- la importancia de entender y comprender las características de funcionamiento
- y operación de los mismos, las condiciones del canal por el que se transmite,
- las propiedades de la señal recibida y los problemas que se presentan en
- la detección de la información.
- Uno de los mayores problemas de estos sistemas se refiere a la detección
- confiable de información, debido a que la señal o señales recibidas se
- han alterado o distorsionado al viajar a través del canal.
+Uno de los mayores problemas de los sistemas de comunicaciones móviles se
+ refiere a la detección confiable de información, debido a que la señal
+ o señales recibidas se han alterado o distorsionado al viajar a través
+ del canal.
  
 \end_layout
 
 \begin_layout Standard
-Lo anterior destaca la importancia del tema de ecualización de señales para
- poder suprimir o compensar problemas presentes en la señal recibida tales
- como retardos, desfases, cambios en amplitud, interferencia intersímbolo
- (ISI), interferencia co-canal (CCI), distorsión, ruido o incluso superposición
+Lo anterior destaca la importancia de la ecualización de señales para poder
+ suprimir o compensar problemas presentes en la señal recibida tales como
+ retardos, desfases, cambios en amplitud, interferencia intersímbolo (ISI),
+ interferencia co-canal (CCI), distorsión, ruido o incluso superposición
  de múltiples versiones de la misma señal.
  Específicamente el SE no lineal busca suprimir o compensar efectos no deseados
  en la señal recibida sin incrementar la potencia de la señal transmitida
@@ -338,26 +333,10 @@ se explica uno de los problemas que se pueden presentar en la propagación
  de señales en sistemas de comunicaciones móviles, el desvanecimiento o
  
 \emph on
-fading
+fading 
 \emph default
-.
- El 
-\emph on
-fading
-\emph default
- corresponde con variaciones de la señal en amplitud, fase o retardo sobre
- un periodo de tiempo o la distancia recorrida por la señal.
- Este fenómeno es causado por interferencia entre dos o más versiones de
- la señal transmitida que llega al receptor en tiempos diferentes e igualmente
- múltiples trayectorias por las que viaja la señal producen efectos de desvaneci
-miento.
- En áreas urbanas el
-\emph on
- fading
-\emph default
- es ocasionado porque la altura de las antenas móviles es inferior a la
- de las estructuras que se encuentran alrededor, incluso si hay línea de
- vista, ocurre el fenómeno de multi-camino debido a reflexiones de la señal.
+que corresponde con variaciones de la señal en amplitud, fase o retardo
+ sobre un periodo de tiempo o la distancia recorrida por la señal.
  Los tipos de 
 \emph on
 fading 
@@ -411,16 +390,12 @@ key "Boccuzzi2008"
 \end_inset
 
  como las series de Volterra, ecualizadores lineales, filtrado adaptativo
- y técnicas de optimización permitirán obtener como resultado final el desarroll
-o y evaluación del SE propuesto para cumplir así el objetivo este proyecto.
- El SE no lineal desarrollado será utilizado como se dijo anteriormente,
- para compensar efectos no deseados en la señal o señales recibidas ocasionados
- por las propiedades del canal y que conllevan a una detección incorrecta
- y poco confiable.
-\end_layout
-
-\begin_layout Standard
-El ecualizador no lineal propuesto utiliza un filtro polinomial cruzado
+ y técnicas de optimización permitirán el desarrollo y evaluación del SE
+ propuesto.
+ El SE no lineal desarrollado será utilizado para compensar efectos no deseados
+ en la señal o señales recibidas ocasionados por las propiedades del canal
+ y que conllevan a una detección incorrecta y poco confiable.
+ El ecualizador no lineal propuesto utiliza un filtro polinomial cruzado
  que es capaz de generar información adicional a partir de la que se recibe
  originalmente en cada una de las antenas que componen el SE.
  El contar con mayor información permitirá conseguir una mejor ecualización
@@ -454,7 +429,7 @@ reference "sec:Conclusiones"
 
 \end_inset
 
- se muestran las conclusiones.
+ se presentan las conclusiones.
 \end_layout
 
 \begin_layout Section

@@ -279,25 +279,16 @@ Introducción
 \end_layout
 
 \begin_layout Standard
-El creciente número de sistemas de comunicación móviles y los problemas
- que estos generan en la transmisión y detección de la información, resaltan
- la importancia de entender y comprender las características de funcionamiento
- y operación de los mismos, las condiciones del canal por el que se transmite,
- las propiedades de la señal recibida y los problemas que se presentan en
- la detección de la información.
- Uno de los mayores problemas de estos sistemas se refiere a la detección
- confiable de información, debido a que la señal o señales recibidas se
- han alterado o distorsionado al viajar a través del canal.
- 
-\end_layout
-
-\begin_layout Standard
-Lo anterior destaca la importancia de la ecualización de señales para poder
+Uno de los mayores problemas de los sistemas de comunicaciones móviles se
+ refiere a la detección confiable de información, debido a que la señal
+ o señales recibidas se han alterado o distorsionado al viajar a través
+ del canal.
+ Lo anterior destaca la importancia de la ecualización de señales para poder
  suprimir o compensar problemas presentes en la señal recibida tales como
  retardos, desfases, cambios en amplitud, interferencia intersímbolo (ISI),
  interferencia co-canal (CCI), distorsión, ruido o incluso superposición
  de múltiples versiones de la misma señal.
- Específicamente el SE no lineal busca suprimir o compensar efectos no deseados
+ El SE no lineal propuestobusca suprimir o compensar efectos no deseados
  en la señal recibida sin incrementar la potencia de la señal transmitida
  e igualmente la del ruido, debido a que el incremento de potencia en el
  transmisor está condicionado por las características físicas de los dispositivo
@@ -400,10 +391,7 @@ key "Boccuzzi2008"
  El SE no lineal desarrollado será utilizado para compensar efectos no deseados
  en la señal o señales recibidas ocasionados por las propiedades del canal
  y que conllevan a una detección incorrecta y poco confiable.
-\end_layout
-
-\begin_layout Standard
-El ecualizador no lineal propuesto utiliza un filtro polinomial cruzado
+ El ecualizador no lineal propuesto utiliza un filtro polinomial cruzado
  que es capaz de generar información adicional a partir de la que se recibe
  originalmente en cada una de las antenas que componen el SE.
  El contar con mayor información permitirá conseguir una mejor ecualización
@@ -437,7 +425,7 @@ reference "sec:Conclusiones"
 
 \end_inset
 
- se muestran las conclusiones.
+ se presentan las conclusiones.
 \end_layout
 
 \begin_layout Section

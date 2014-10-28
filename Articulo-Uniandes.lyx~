@@ -338,15 +338,10 @@ se explica uno de los problemas que se pueden presentar en la propagación
  de señales en sistemas de comunicaciones móviles, el desvanecimiento o
  
 \emph on
-fading
+fading 
 \emph default
-.
- El 
-\emph on
-fading
-\emph default
- corresponde con variaciones de la señal en amplitud, fase o retardo sobre
- un periodo de tiempo o la distancia recorrida por la señal.
+que corresponde con variaciones de la señal en amplitud, fase o retardo
+ sobre un periodo de tiempo o la distancia recorrida por la señal.
  Los tipos de 
 \emph on
 fading 
@@ -400,12 +395,11 @@ key "Boccuzzi2008"
 \end_inset
 
  como las series de Volterra, ecualizadores lineales, filtrado adaptativo
- y técnicas de optimización permitirán obtener como resultado final el desarroll
-o y evaluación del SE propuesto para cumplir así el objetivo este proyecto.
- El SE no lineal desarrollado será utilizado como se dijo anteriormente,
- para compensar efectos no deseados en la señal o señales recibidas ocasionados
- por las propiedades del canal y que conllevan a una detección incorrecta
- y poco confiable.
+ y técnicas de optimización permitirán el desarrollo y evaluación del SE
+ propuesto.
+ El SE no lineal desarrollado será utilizado para compensar efectos no deseados
+ en la señal o señales recibidas ocasionados por las propiedades del canal
+ y que conllevan a una detección incorrecta y poco confiable.
 \end_layout
 
 \begin_layout Standard
@@ -443,7 +437,7 @@ reference "sec:Conclusiones"
 
 \end_inset
 
- se muestran las conclusiones.
+ se presentan las conclusiones.
 \end_layout
 
 \begin_layout Section
