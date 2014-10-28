@@ -178,8 +178,8 @@ date{Recibido 14 de noviembre de 2014}}
 \end_layout
 
 \begin_layout Abstract
-El estudio del problema de ecualización de señales en ambientes de comunicacione
-s móviles conlleva a desarrollar un
+El problema de detección correcta de información transmitida a través de
+ ambientes de comunicaciones móviles motiva a desarrollar un
 \emph on
  
 \emph default
@@ -191,15 +191,48 @@ Ecualizador Espacial
 \emph on
  
 \emph default
-no lineal y evaluar su desempeño bajo diferentes condiciones del canal de
- comunicaciones.
- Se muestra la estructura general y se construye el fundamento matemático
- para el cálculo y actualización de los coeficientes del filtro polinomial
- cruzado que utiliza el SE no lineal propuesto y garantizar así un correcta
- detección de la información.
+no lineal y evaluar su desempeño en estas condiciones.
+ Para esto se construye la estructura general y se desarrolla un modelo
+ matemático que permita el cálculo y actualización de los coeficientes del
+ SE no lineal con el fin de garantizar un correcta detección de la información.
  Finalmente se evalúa el desempeño del ecualizador y se realizan comparaciones
- con un ecualizador lineal bajo diferentes ambientes de simulación y con
- distintas configuraciones de los ecualizadores.
+ con un ecualizador lineal bajo diferentes condiciones de canal o ambientes
+ de simulación y con distintas configuraciones de los ecualizadores.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+abstractname}{Abstract}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abstract} Reliable information detection on mobile communications
+ environments lead us to develop a non linear Space Equalizer (SE) and evaluate
+ its performance in different conditions.
+ The general structure and the matematics model to estimate and update the
+ equalizer coefficients are developed to achieve the goal of accurately
+ detection of transmitted signals.
+ Finally the SE performance is compared with the linear equalizer performance
+ using different environment conditions and equalizers settings.
+  
+\backslash
+end{abstract}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
