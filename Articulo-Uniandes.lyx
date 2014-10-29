@@ -2295,8 +2295,8 @@ En este trabajo se desarrolló un SE no lineal que utiliza un filtro polinomial
  del receptor a partir de las señales que se recibes originalmente en el
  arreglo de antenas.
  La señales generadas tienen las mismas características estadísticas de
- las señales recibidas y crece de manera exponencial en función del número
- de antenas que componen el ecualizador.
+ las señales recibidas y el número de estas crece de manera exponencial
+ en función del número de antenas que componen el ecualizador.
  A medida que se cuenta con mayor información el desempeño del ecualizador
  mejora respecto al caso del ecualizador lineal.
  
@@ -2317,10 +2317,10 @@ Con los resultados obtenidos se demuestra que el ecualizador desarrollado
  que entre mayor sea el número el ecualizador presenta un mejor desempeño
  y esto es debido a que se genera información adicional que incrementa en
  función del número de antenas, permitiendo de esta manera una mejor ecualizació
-n de la señal y garantizando de esta manera una correcta detección de la
- información transmitida originalmente.
+n de la señal y garantizando una correcta detección de la información transmitid
+a originalmente.
  Estos resultados soportan los desarrollos teóricos realizados para este
- proyecto.
+ trabajo.
  
 \end_layout
 
