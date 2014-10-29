@@ -279,24 +279,20 @@ Introducción
 \end_layout
 
 \begin_layout Standard
-Uno de los mayores problemas de los sistemas de comunicaciones móviles se
- refiere a la detección confiable de información, debido a que la señal
- o señales recibidas se han alterado o distorsionado al viajar a través
- del canal.
- 
-\end_layout
-
-\begin_layout Standard
-Lo anterior destaca la importancia de la ecualización de señales para poder
+Uno de los mayores problemas de los sistemas de comunicaciones móviles correspon
+de a la detección confiable de información, debido a que la señal o señales
+ recibidas se han alterado o distorsionado al viajar a través del canal
+ o medio de transmisión.
+ Lo anterior destaca la importancia de la ecualización de señales para poder
  suprimir o compensar problemas presentes en la señal recibida tales como
  retardos, desfases, cambios en amplitud, interferencia intersímbolo (ISI),
  interferencia co-canal (CCI), distorsión, ruido o incluso superposición
  de múltiples versiones de la misma señal.
- Específicamente el SE no lineal busca suprimir o compensar efectos no deseados
- en la señal recibida sin incrementar la potencia de la señal transmitida
- e igualmente la del ruido, debido a que el incremento de potencia en el
- transmisor está condicionado por las características físicas de los dispositivo
-s que conforman el sistema.
+ El Ecualizador Espacial (SE) no lineal propuesto busca disminuir el impacto
+ de efectos no deseados en la señal recibida sin incrementar la potencia
+ de la señal transmitida e igualmente la del ruido, debido a que el incremento
+ de potencia en el transmisor está condicionado por las características
+ físicas de los dispositivos que forman el sistema.
  
 \end_layout
 
@@ -333,7 +329,7 @@ se explica uno de los problemas que se pueden presentar en la propagación
  de señales en sistemas de comunicaciones móviles, el desvanecimiento o
  
 \emph on
-fading 
+fading, 
 \emph default
 que corresponde con variaciones de la señal en amplitud, fase o retardo
  sobre un periodo de tiempo o la distancia recorrida por la señal.
@@ -392,12 +388,9 @@ key "Boccuzzi2008"
  como las series de Volterra, ecualizadores lineales, filtrado adaptativo
  y técnicas de optimización permitirán el desarrollo y evaluación del SE
  propuesto.
- El SE no lineal desarrollado será utilizado para compensar efectos no deseados
- en la señal o señales recibidas ocasionados por las propiedades del canal
- y que conllevan a una detección incorrecta y poco confiable.
- El ecualizador no lineal propuesto utiliza un filtro polinomial cruzado
- que es capaz de generar información adicional a partir de la que se recibe
- originalmente en cada una de las antenas que componen el SE.
+ El ecualizador propuesto utiliza un filtro polinomial cruzado que es capaz
+ de generar información adicional a partir de la que se recibe originalmente
+ en cada una de las antenas que componen el SE.
  El contar con mayor información permitirá conseguir una mejor ecualización
  de la señal y por ende una detección fiel de la información transmitida
  originalmente.
@@ -444,8 +437,8 @@ name "sec:STE-no-lineal"
 \end_layout
 
 \begin_layout Standard
-Se considera un sistema de comunicaciones inalámbrico que consta de una
- antena transmisora y de 
+Se considera un sistema de comunicaciones inalámbrico de una antena transmisora
+ y de 
 \begin_inset Formula $N$
 \end_inset
 
@@ -482,13 +475,11 @@ key "Yang2009"
 
 \end_inset
 
- y que se mantiene constante durante la duración o intervalo del símbolo;
+ y que se mantiene constante durante el intervalo del símbolo, adicionalmente
  la señal también se ve afectada por el ruido del canal.
- Para este proyecto se evaluarán diferentes modelos de ruido cambiando su
- función de densidad de probabilidad, se utilizará ruido con distribución
- de probabilidad Normal o Gaussiana y también se evaluará el desempeño del
- ecualizador si el modelo del ruido tiene una distribución Gaussiana Generalizad
-a 
+ Se analizarán diferentes modelos de ruido cambiando su función de densidad
+ de probabilidad, se utilizará ruido con distribución de probabilidad Gaussiana
+ Generalizada 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Novey2010"
@@ -501,8 +492,8 @@ key "Novey2010"
 \emph on
 fading 
 \emph default
-son funciones complejas y se asumen estadísticamente independientes de canal
- a canal e idénticamente distribuidas.
+son funciones complejas y que se asumen estadísticamente independientes
+ de canal a canal e idénticamente distribuidas.
 \end_layout
 
 \begin_layout Standard
@@ -546,10 +537,17 @@ la ganancia introducida por el canal debido al desvanecimiento y
 \end_inset
 
  corresponde al ruido aditivo que afecta a la señal o símbolo transmitido.
+ Se decidió utilizar un 
+\emph on
+Symbol Spaced Equalizer
+\emph default
+ (SSE) para el SE desarrollado, es decir, cada símbolo está representado
+ únicamente por una muestra.
+ 
 \end_layout
 
 \begin_layout Standard
-El SE no lineal propuesto está compuesto por un arreglo de 
+El SE no lineal está compuesto por un arreglo de 
 \begin_inset Formula $N$
 \end_inset
 
@@ -559,11 +557,8 @@ El SE no lineal propuesto está compuesto por un arreglo de
 Filtro Polinomial Cruzado
 \series default
  que procesará la información recibida y entregará una señal ecualizada
- que es utilizada para la detección de la información.
-\end_layout
-
-\begin_layout Standard
-El filtro propuesto basa su estructura en un filtro polinomial cuadrático
+ utilizada para la detección de la información.
+ La estructura de este filtro está basada en un filtro polinomial cuadrático
  causal, discreto, invariante con el tiempo y de orden 
 \begin_inset Formula $M$
 \end_inset
@@ -615,24 +610,12 @@ offset
 \end_layout
 
 \begin_layout Standard
-Se decidió utilizar un 
-\emph on
-Symbol Spaced Equalizer
-\emph default
- (SSE) para el SE desarrollado, es decir, cada símbolo está representado
- únicamente por una muestra.
- 
-\end_layout
-
-\begin_layout Standard
 El filtro polinomial cruzado consiste de un filtro lineal asociado a cada
  antena receptora del SE y un filtro cuadrático cruzado que recibe dos señales
- diferentes de las antenas y produce una nueva señal que será procesada.
+ diferentes de las antenas y produce una nueva señal resultado del producto
+ de una de ellas conjugada con la otra sin conjugar.
  Las señales de salida tanto del filtro lineal como del filtro cuadrático
  cruzado serán sumadas para obtener una señal ecualizada.
- En general las señales recibidas en las antenas del SE son señales complejas,
- se utilizará el complejo conjugado de las señales cuando se multipliquen
- para ingresar al filtro polinomial cruzado.
  La estructura general del filtro propuesto se muestra en Fig.
  
 \begin_inset CommandInset ref
@@ -656,7 +639,7 @@ status open
 \begin_inset Graphics
 	filename ../../Desktop/ArticuloTesisMSc/img/Estructura Filtro Polinomial Cruzado.svg
 	display false
-	width 50col%
+	width 30page%
 
 \end_inset
 
@@ -714,88 +697,6 @@ reference "fig:EstructuraFiltroPolinomialCruzado"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{equation}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{split}
-\end_layout
-
-\begin_layout Plain Layout
-
-y_{eq}&=y_{1}w_{1}+y_{2}w_{2}+
-\backslash
-cdots+y_{N}w_{N}+
-\backslash
-left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}
-\backslash
-right)w_{1,2}
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-&+
-\backslash
-cdots+
-\backslash
-left(y_{1}y_{N}^{*}-h_{1}h_{N}^{*}
-\backslash
-right)w_{1,N}+
-\backslash
-cdots
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-&+
-\backslash
-left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}
-\backslash
-right)w_{N-1,N}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{split}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{equation}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-lque puede reescribirse como
 \end_layout
 
 \begin_layout Standard
@@ -941,7 +842,7 @@ y
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{w=}\left[w_{1}\ \ \ w_{2}\ \dots\ w_{N}\ \ \ w_{1,2}\ \dots w_{1,N}\dots w_{N-1,N}\right]^{T}
+\mathbf{w=}\left[w_{1}\ \ \ w_{2}\ \dots\ w_{N}\ \ \ w_{1,2}\ \dots w_{1,N}\dots w_{N-1,N}\right]^{T}.
 \end{equation}
 
 \end_inset
@@ -950,23 +851,10 @@ y
 \end_layout
 
 \begin_layout Standard
-ambos vectores tienen dimensión 
-\size tiny
-
-\begin_inset Formula $\left[\left(N+\dbinom{N}{2}\right)\textnormal{x}1\right]$
-\end_inset
-
-
-\size default
-.
- 
-\end_layout
-
-\begin_layout Standard
-Con la estructura y representación matemática de un SE no lineal mostradas
- anteriormente, se debe determinar los coeficientes óptimos de cada uno
- de los filtros que componen el sistema.
- Se propone entonces realizar una formulación MMSE (
+Con la estructura y representación matemática del SE no lineal propuesto,
+ se debe determinar los coeficientes óptimos de cada uno de los filtros
+ que componen el sistema.
+ Para esto se realiza una formulación MMSE (
 \emph on
 Minimum Mean Square Error
 \emph default
