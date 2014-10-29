@@ -4,7 +4,7 @@
 \begin_header
 \textclass article
 \begin_preamble
-\usepackage[ngerman,french,english]{babel}
+\usepackage[english]{babel}
 \usepackage{subfigure}
 \usepackage{amsmath}
 \usepackage{apacite}
@@ -629,7 +629,6 @@ reference "fig:EstructuraFiltroPolinomialCruzado"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -1016,15 +1015,10 @@ Filtro Polinomial Cruzado Adaptativo
 \end_layout
 
 \begin_layout Standard
-Ahora se considera el caso de sistemas no lineales y variantes con el tiempo
-\series bold
-.
-
-\series default
- Para este tipo de sistema se propone desarrollar un filtro que procese
- la señal de entrada para que la señal de salida sea lo más cercana posible
- a la señal deseada, para esto el sistema adapta los coeficientes del filtro
- continuamente usando la señal de error como base de la actualización.
+Para extender los desarrollos anteriores al caso de sistemas variantes en
+ el tiempo, se propone desarrollar un filtro polinomial cruzado que adapte
+ sus coeficientes continuamente usando la señal de error (diferencia entre
+ la señal de salida del filtro y la señal deseada) como base de la actualización.
  Al igual que en el caso invariante con el tiempo, se desarrollará el planteamie
 nto para un filtro polinomial cruzado adaptativo extendiendo los desarrollos
  para filtros truncados de Volterra adaptativos como se muestran en 
@@ -1102,15 +1096,6 @@ right)w_{k}
 left(n
 \backslash
 right)+
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-&
 \backslash
 sum_{m=1}^{N-1}
 \backslash
@@ -1321,15 +1306,6 @@ dots
 \backslash
 right.
 \backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-&
-\backslash
 left.y_{1}
 \backslash
 left(n
@@ -1433,15 +1409,6 @@ left(n
 right)
 \backslash
 right.
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-&
 \backslash
 left.w_{1,2}
 \backslash
@@ -1566,6 +1533,7 @@ status open
 \begin_layout Itemize
 
 \series bold
+\size footnotesize
 Inicialización
 \begin_inset Newline newline
 \end_inset
@@ -1600,6 +1568,7 @@ Inicialización
 \begin_layout Itemize
 
 \series bold
+\size footnotesize
 Iteración principal
 \begin_inset Newline newline
 \end_inset
@@ -1658,6 +1627,8 @@ e\left(n\right)=d\left(n\right)-\mathbf{y}^{T}\left(n\right)\mathbf{w}\left(n\ri
 \end_layout
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Donde 
 \begin_inset Formula $\delta$
 \end_inset

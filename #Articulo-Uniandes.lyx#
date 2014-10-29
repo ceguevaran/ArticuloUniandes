@@ -629,7 +629,6 @@ reference "fig:EstructuraFiltroPolinomialCruzado"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -971,169 +970,6 @@ y
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $ $
-\end_inset
-
-En las ecuaciones 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:10"
-
-\end_inset
-
- y 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ref{eq:P}
-\end_layout
-
-\end_inset
-
- se definen explicitamente la matriz 
-\begin_inset Formula $\mathbf{C_{yy}}$
-\end_inset
-
- y el vector 
-\begin_inset Formula $\mathbf{P}$
-\end_inset
-
- respectivamente
-\end_layout
-
-\begin_layout Standard
-
-\size small
-\begin_inset Float figure
-placement t
-wide true
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\size small
-\begin_inset Formula 
-\begin{equation}
-\mathbf{C_{yy}=}E\left\{ \left[\begin{array}{ccccc}
-\left|y_{1}\right|^{2} & \cdots & y_{1}y_{N}^{*} & \cdots & y_{1}\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)^{*}\\
-\vdots & \ddots & \vdots & \ddots & \vdots\\
-y_{N}y_{1}^{*} & \cdots & \left|y_{N}\right|^{2} & \cdots & y_{N}\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)^{*}\\
-\left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)y_{1}^{*} & \cdots & \left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)y_{N}^{*} & \cdots & \left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)^{*}\\
-\vdots & \ddots & \vdots & \ddots & \vdots\\
-\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)y_{1}^{*} & \cdots & \left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)y_{N}^{*} & \cdots & \left|\left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)\right|^{2}
-\end{array}\right]\right\} \label{eq:10}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{equation}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-label{eq:P}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{split}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-mathbf{P}&=E
-\backslash
-left
-\backslash
-{ 
-\backslash
-left[sy_{1}
-\backslash
-cdots sy_{N}
-\backslash
- s
-\backslash
-left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}
-\backslash
-right)
-\backslash
-right.
-\backslash
-right.
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-&
-\backslash
-left.
-\backslash
-left.
-\backslash
-cdots s
-\backslash
-left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}
-\backslash
-right)
-\backslash
-right]^{T}
-\backslash
-right
-\backslash
-} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{split}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{equation}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 donde la martriz 
 \begin_inset Formula $\mathbf{C_{yy}}$
 \end_inset
@@ -1179,15 +1015,10 @@ Filtro Polinomial Cruzado Adaptativo
 \end_layout
 
 \begin_layout Standard
-Ahora se considera el caso de sistemas no lineales y variantes con el tiempo
-\series bold
-.
-
-\series default
- Para este tipo de sistema se propone desarrollar un filtro que procese
- la señal de entrada para que la señal de salida sea lo más cercana posible
- a la señal deseada, para esto el sistema adapta los coeficientes del filtro
- continuamente usando la señal de error como base de la actualización.
+Para extender los desarrollos anteriores al caso de sistemas variantes en
+ el tiempo, se propone desarrollar un filtro polinomial cruzado que adapte
+ sus coeficientes continuamente usando la señal de error (diferencia entre
+ la señal de salida del filtro y la señal deseada) como base de la actualización.
  Al igual que en el caso invariante con el tiempo, se desarrollará el planteamie
 nto para un filtro polinomial cruzado adaptativo extendiendo los desarrollos
  para filtros truncados de Volterra adaptativos como se muestran en 
@@ -1265,15 +1096,6 @@ right)w_{k}
 left(n
 \backslash
 right)+
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-&
 \backslash
 sum_{m=1}^{N-1}
 \backslash
@@ -1484,15 +1306,6 @@ dots
 \backslash
 right.
 \backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-&
-\backslash
 left.y_{1}
 \backslash
 left(n
@@ -1596,15 +1409,6 @@ left(n
 right)
 \backslash
 right.
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-&
 \backslash
 left.w_{1,2}
 \backslash
@@ -1729,6 +1533,7 @@ status open
 \begin_layout Itemize
 
 \series bold
+\size footnotesize
 Inicialización
 \begin_inset Newline newline
 \end_inset
@@ -1763,6 +1568,7 @@ Inicialización
 \begin_layout Itemize
 
 \series bold
+\size footnotesize
 Iteración principal
 \begin_inset Newline newline
 \end_inset
@@ -1821,6 +1627,8 @@ e\left(n\right)=d\left(n\right)-\mathbf{y}^{T}\left(n\right)\mathbf{w}\left(n\ri
 \end_layout
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Donde 
 \begin_inset Formula $\delta$
 \end_inset
