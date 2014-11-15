@@ -793,18 +793,7 @@ dots
 \backslash
 cdots
 \backslash
-right.
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-&
-\backslash
-left.y_{1}y_{N}^{*}-h_{1}h_{N}^{*}
+  y_{1}y_{N}^{*}-h_{1}h_{N}^{*}
 \backslash
  
 \backslash
@@ -1683,7 +1672,7 @@ Para determinar el desempeño del SE propuesto se realizaron diferentes pruebas,
 
 \begin_layout Standard
 Para las pruebas realizadas se utilizaron dos, tres, cuatro y cinco antenas
- para los dos SE (lineal y propuesto) y además se utilizó un canal 
+ para los dos SE y además se utilizó un canal 
 \emph on
 frequency nonselective flat fading 
 \emph default
@@ -1696,12 +1685,11 @@ aditivo
 .
  
 \emph default
-Como se dijo anteriormente se decidió utilizar un 
+Se utilizó un 
 \emph on
 Symbol Spaced Equalizer, 
 \emph default
-donde cada símbolo está representado con una muestra y se asume que los
- símbolos no tienen relación entre si.
+donde los símbolos no tienen relación entre si.
  
 \end_layout
 
@@ -1717,34 +1705,35 @@ Las ganancias debido al desvanecimiento introducido por el canal se asumen
 
 \begin_layout Standard
 Para el modelo del ruido aditivo en la primera prueba se utilizó una distribució
-n Gaussiana con media cero y con varianza 
+n Gaussiana (
+\begin_inset Formula $\rho=2$
+\end_inset
+
+) con media cero y con varianza 
 \begin_inset Formula $N_{0}/2$
 \end_inset
 
  para generar la componente real y la componente imaginaria del ruido que
  son independientes entre si.
- Como se dijo anteriormente tanto las funciones del modelo del ruido como
- las funciones del modelo del 
+ Tanto las funciones del modelo del ruido como las funciones del modelo
+ del 
 \emph on
 fading 
 \emph default
 son funciones complejas y se asumen estadísticamente independientes de canal
  a canal e idénticamente distribuidas.
- Con todas las consideraciones mostradas anteriormente, se realizaron simulacion
-es de Montecarlo para evaluar el desempeño del SE y como criterios de desempeño
- se decidió utilizar la curva de tasa de error de bit (BER) para diferentes
- valores de relación señal a ruido por bit (SNR/bit) y el diagrama de constelaci
-ón.
+ Se realizaron simulaciones de Montecarlo para evaluar el desempeño del
+ SE y como criterio de desempeño se decidió utilizar la curva de tasa de
+ error de bit (BER) para diferentes valores de relación señal a ruido por
+ bit (SNR/bit).
 \end_layout
 
 \begin_layout Standard
-El primer escenario de prueba consiste de un sistema compuesto por un canal
- 
+Además se asume para esta prueba que la información viaja por un canal 
 \emph on
-frequency nonselective flat fading 
+frequency nonselective flat fading
 \emph default
-y ruido aditivo con distribución de probabilidad Gaussiana y utilizando
- un esquema de modulación BPSK.
+ utilizando un esquema de modulación BPSK.
  Los resultados obtenidos para este escenario se muestran en la Fig.
  
 \begin_inset CommandInset ref
@@ -1987,15 +1976,14 @@ reference "BERGG15"
  en general el desempeño se degrada en comparación al caso Gaussiano.
  Sin embargo, de la misma forma que ocurrió con el caso Gaussiano el desempeño
  del SE desarrollado en este trabajo es superior al del caso de un SE lineal,
- se mantiene la ganancia en dB respecto al lineal que es de aproximadamente
- 2 dB.
+ se mantiene la ganancia de aproximadamente 2 dB respecto al lineal.
  Se observa igualmente que el desempeño con cinco antenas sigue siendo superior
  al resto de configuraciones.
  
 \end_layout
 
 \begin_layout Standard
-Por otro parte en la Fig.
+Finalmente en la Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2003,15 +1991,15 @@ reference "BERGG11"
 
 \end_inset
 
- se observa la curva de desempeño de BER vs SNR para un modelo de ruido
- con distribución Gaussiana Generalizada con un factor de forma 
+ se observa la curva de desempeño BER vs SNR para un modelo de ruido con
+ distribución Gaussiana Generalizada con un factor de forma 
 \begin_inset Formula $\rho=1.1$
 \end_inset
 
-, cercano al peor caso que pueda considerarse para este trabajo.
+, cercano al peor caso que considerado este trabajo.
  Evidentemente el desempeño en general es inferior a los dos casos mostrados
- anteriormente, ya que para un valor de SNR dado su valor de BER es mayor
- lo que genera una detección incorrecta de la información.
+ anteriormente, ya que para un valor de SNR su valor de BER es mayor, lo
+ que genera una detección incorrecta de la información.
  Sin embargo bajo estas condiciones la ganancia en dB respecto al ecualizador
  lineal es en promedio superior a los 2 dB.
  Nuevamente el SE propuesto es superior en todas las diferentes configuraciones
@@ -2029,12 +2017,9 @@ Por último se evaluó el desempeño y la convergencia de los coeficientes
 
 , nuevamente se asumió que se conocía los coeficientes que describen el
  modelo del canal y tienen las mismas características mencionadas anteriormente,
- media cero y varianza 
-\begin_inset Formula $\sigma_{h_{m}}^{2}$
-\end_inset
-
-, asimismo el modelo del ruido tiene media cero y varianza unitaria, el
- esquema de modulación utilizado fue BPSK, en la Fig.
+ asimismo el modelo del ruido tiene media cero y varianza unitaria y el
+ esquema de modulación escogido fue BPSK.
+ En la Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2042,8 +2027,7 @@ reference "Adaptativo"
 
 \end_inset
 
- se muestran los resultados.
- Se puede observar la convergencia del ecualizador propuesto para diferentes
+ se puede observar la convergencia del ecualizador propuesto para diferentes
  valores de SNR y para diferentes condiciones de canal donde el modelo del
  ruido se hace cada vez más agresivo.
  Las Figs.
