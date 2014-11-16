@@ -2270,15 +2270,11 @@ En este trabajo se desarrolló un SE no lineal que utiliza un filtro polinomial
 \end_layout
 
 \begin_layout Standard
-Con los resultados obtenidos se demuestra que el ecualizador desarrollado
- tiene un desempeño superior respecto al ecualizador lineal en todos los
- ambientes evaluados, sin importar el número de antenas que conforman el
- ecualizador, diferentes valores de relación señal a ruido y si las condiciones
- del canal se vuelven más agresivas, haciéndolo más robusto.
- Las medidas de desempeño utilizadas permitieron corroborar que ante diferentes
- condiciones de canal, con modelos de ruido mucho más agresivos el ecualizador
- desarrollado mantenía su desempeño casi sin alterarse y de la misma manera
- continuaba siendo superior al del ecualizador lineal.
+Con as medidas de desempeño utilizadas se demuestra que el ecualizador desarroll
+ado tiene un desempeño superior respecto al ecualizador lineal en todos
+ los ambientes evaluados, sin importar el número de antenas que conforman
+ el ecualizador, diferentes valores de relación señal a ruido o si las condicion
+es del canal se vuelven más agresivas.
  Respecto al número de antenas receptoras del SE propuesto, se concluye
  que entre mayor sea el número el ecualizador presenta un mejor desempeño
  y esto es debido a que se genera información adicional que incrementa en
