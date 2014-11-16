@@ -2,7 +2,7 @@
 %% Do not edit unless you really know what you are doing.
 \documentclass[spanish]{article}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{luainputenc}
+\usepackage[latin9]{inputenc}
 \usepackage{geometry}
 \geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 \usepackage{float}
@@ -18,10 +18,11 @@
 \floatname{algorithm}{\protect\algorithmname}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
-\usepackage[ngerman,french,english]{babel}
+\usepackage[english]{babel}
 \usepackage{subfigure}
 \usepackage{amsmath}
 \usepackage{apacite}
+\usepackage{graphicx}
 \date{}
 
 \makeatother
@@ -31,201 +32,164 @@
 
 \begin{document}
 
-\title{Evaluación de desempeño de un ecualizador espacial no lineal en ambientes
-de comunicaciones móviles.\\
+\title{Evaluaci�n de desempe�o de un ecualizador espacial no lineal en ambientes
+de comunicaciones m�viles.\\
 Performance evaluation of non linear space equalizer for mobile communications
 environment.}
 
 \maketitle
-\author{\textbf{Carlos E. Guevara N.$^{1}$$^{*}$, César L. Niño$^{2}$$^{*}$\\ \\} 
-\small{$^{1}$M.Sc. Ingeniería Electrónica, Profesor de Cátedra. carlos.guevara@javeriana.edu.co}\\ 
-\small{$^{2}$PhD. Ingeniería Electrónica, Director de Maestría Ingeniería Electrónica Pontifica Universidad Javeriana. \\ cesar.nino@javeriana.edu.co}\\
-\small{$^{*}$ Pontificia Universidad Javeriana, Bogotá D.C, Colombia}
+\author{\textbf{Carlos E. Guevara N.$^{1}$$^{*}$, C�sar L. Ni�o$^{2}$$^{*}$\\ \\} 
+\small{$^{1}$M.Sc. Ingenier�a Electr�nica, Profesor de C�tedra. carlos.guevara@javeriana.edu.co}\\ 
+\small{$^{2}$PhD. Ingenier�a Electr�nica, Director de Maestr�a Ingenier�a Electr�nica Pontifica Universidad Javeriana. \\ cesar.nino@javeriana.edu.co}\\
+\small{$^{*}$ Pontificia Universidad Javeriana, Bogot� D.C, Colombia}
 }\\ \\
 \small{\date{Recibido 14 de noviembre de 2014}}
 \providecommand{\keywordsSP}[1]{\textbf{\textit{Palabras clave---}} #1}
 \selectlanguage{spanish}
-\begin{abstract} El problema de detección correcta de información transmitida a través de ambientes de comunicaciones móviles motiva a desarrollar un Ecualizador Espacial (SE) no lineal y evaluar su desempeño en estas condiciones. Para esto se construye la estructura general y se desarrolla un modelo matemático que permita el cálculo y actualización de los coeficientes del SE no lineal con el fin de garantizar un correcta detección de la información. Finalmente se evalúa el desempeño del ecualizador y se realizan comparaciones con un ecualizador lineal bajo diferentes condiciones de canal o ambientes de simulación y con distintas configuraciones de los ecualizadores.
+\begin{abstract} El problema de detecci�n correcta de informaci�n transmitida a trav�s de ambientes de comunicaciones m�viles motiva a desarrollar un Ecualizador Espacial (SE) no lineal y evaluar su desempe�o en estas condiciones. Para esto se construye la estructura general y se desarrolla un modelo matem�tico que permita el c�lculo y actualizaci�n de los coeficientes del SE no lineal con el fin de garantizar un correcta detecci�n de la informaci�n. Finalmente se eval�a el desempe�o del ecualizador y se realizan comparaciones con un ecualizador lineal bajo diferentes condiciones de canal o ambientes de simulaci�n y con distintas configuraciones de los ecualizadores.
 \end{abstract}
-\keywordsSP{Arreglo de antenas, Canal con desvanecimiento, Comunicaciones móviles, Ecualizador espacial, Filtro adaptativo, Filtro de Volterra,  LMS, MMSE, RLS.}
+\keywordsSP{Arreglo de antenas, Canal con desvanecimiento, Comunicaciones m�viles, Ecualizador espacial, Filtro adaptativo, Filtro de Volterra,  LMS, MMSE, RLS.}
 \providecommand{\keywordsEN}[1]{\textbf{\textit{Key words---}} #1}
 \selectlanguage{english}
 \begin{abstract} Reliable information detection on mobile communications environments lead us to develop a non linear Space Equalizer (SE) and evaluate its performance in different conditions. The general structure and the matematics model to estimate and update the equalizer coefficients are developed to achieve the goal of accurately detection of transmitted signals. Finally the SE performance is compared with the linear equalizer performance using different environment  conditions and equalizers settings.  \end{abstract}
 \keywordsEN{Antenna arrays, Adaptive filter, Fading channel, LMS, MMSE, Mobile communications, RLS, Space equalizer, Volterra filter.}
 
 
-\section{Introducción}
+\section{Introducci�n}
 
-El creciente número de sistemas de comunicación móviles y los problemas
-que estos generan en la transmisión y detección de la información,
-resaltan la importancia de entender y comprender las características
-de funcionamiento y operación de los mismos, las condiciones del canal
-por el que se transmite, las propiedades de la señal recibida y los
-problemas que se presentan en la detección de la información. Uno
-de los mayores problemas de estos sistemas se refiere a la detección
-confiable de información, debido a que la señal o señales recibidas
-se han alterado o distorsionado al viajar a través del canal. 
-
-Lo anterior destaca la importancia del tema de ecualización de señales
-para poder suprimir o compensar problemas presentes en la señal recibida
-tales como retardos, desfases, cambios en amplitud, interferencia
-intersímbolo (ISI), interferencia co-canal (CCI), distorsión, ruido
-o incluso superposición de múltiples versiones de la misma señal.
-Específicamente el SE no lineal busca suprimir o compensar efectos
-no deseados en la señal recibida sin incrementar la potencia de la
-señal transmitida e igualmente la del ruido, debido a que el incremento
-de potencia en el transmisor está condicionado por las características
-físicas de los dispositivos que conforman el sistema. 
+Uno de los mayores problemas de los sistemas de comunicaciones m�viles
+corresponde a la detecci�n confiable de informaci�n, debido a que
+la se�al o se�ales recibidas se han alterado o distorsionado al viajar
+a trav�s del canal o medio de transmisi�n. Lo anterior destaca la
+importancia de la ecualizaci�n de se�ales para poder suprimir o compensar
+problemas presentes en la se�al recibida tales como retardos, desfases,
+cambios en amplitud, interferencia inters�mbolo (ISI), interferencia
+co-canal (CCI), distorsi�n, ruido o incluso superposici�n de m�ltiples
+versiones de la misma se�al. El Ecualizador Espacial (SE) no lineal
+propuesto busca disminuir el impacto de efectos no deseados en la
+se�al recibida sin incrementar la potencia de la se�al transmitida
+e igualmente la del ruido, debido a que el incremento de potencia
+en el transmisor est� condicionado por las caracter�sticas f�sicas
+de los dispositivos que forman el sistema. 
 
 En \cite{Technology}, \cite{Rappaport},\cite{Paulraj1997} y \cite{Paulraj1997a}se
-explica uno de los problemas que se pueden presentar en la propagación
-de señales en sistemas de comunicaciones móviles, el desvanecimiento
-o \emph{fading}. El \emph{fading} corresponde con variaciones de la
-señal en amplitud, fase o retardo sobre un periodo de tiempo o la
-distancia recorrida por la señal. Este fenómeno es causado por interferencia
-entre dos o más versiones de la señal transmitida que llega al receptor
-en tiempos diferentes e igualmente múltiples trayectorias por las
-que viaja la señal producen efectos de desvanecimiento. En áreas urbanas
-el\emph{ fading} es ocasionado porque la altura de las antenas móviles
-es inferior a la de las estructuras que se encuentran alrededor, incluso
-si hay línea de vista, ocurre el fenómeno de multi-camino debido a
-reflexiones de la señal. Los tipos de \emph{fading }mencionados en
-\cite{Rappaport} debido al tiempo de retardo de propagación multi-camino
-son \emph{flat fading} y \emph{frequency selective fading}. 
+explica uno de los problemas que se pueden presentar en la propagaci�n
+de se�ales en sistemas de comunicaciones m�viles, el desvanecimiento
+o \emph{fading, }que corresponde con variaciones de la se�al en amplitud,
+fase o retardo sobre un periodo de tiempo o la distancia recorrida
+por la se�al. Los tipos de \emph{fading }mencionados en \cite{Rappaport}
+debido al tiempo de retardo de propagaci�n multi-camino son \emph{flat
+fading} y \emph{frequency selective fading}. 
 
-La integración de las múltiples técnicas formuladas y desarrolladas
+La integraci�n de las m�ltiples t�cnicas formuladas y desarrolladas
 en \cite{Flury}, \cite{Rappaport}, \cite{Diniz2008} y \cite{Boccuzzi2008}
 como las series de Volterra, ecualizadores lineales, filtrado adaptativo
-y técnicas de optimización permitirán obtener como resultado final
-el desarrollo y evaluación del SE propuesto para cumplir así el objetivo
-este proyecto. El SE no lineal desarrollado será utilizado como se
-dijo anteriormente, para compensar efectos no deseados en la señal
-o señales recibidas ocasionados por las propiedades del canal y que
-conllevan a una detección incorrecta y poco confiable.
+y t�cnicas de optimizaci�n permitir�n el desarrollo y evaluaci�n del
+SE propuesto. El ecualizador propuesto utiliza un filtro polinomial
+cruzado que es capaz de generar informaci�n adicional a partir de
+la que se recibe originalmente en cada una de las antenas que componen
+el SE. El contar con mayor informaci�n permitir� conseguir una mejor
+ecualizaci�n de la se�al y por ende una detecci�n fiel de la informaci�n
+transmitida originalmente.
 
-El ecualizador no lineal propuesto utiliza un filtro polinomial cruzado
-que es capaz de generar información adicional a partir de la que se
-recibe originalmente en cada una de las antenas que componen el SE.
-El contar con mayor información permitirá conseguir una mejor ecualización
-de la señal y por ende una detección fiel de la información transmitida
-originalmente.
-
-El artículo está organizado como sigue, en la Sección \ref{sec:STE-no-lineal}
-se describe el ambiente de operación, la estructura y el desarrollo
-matemático para el SE no lineal propuesto. En la Sección \ref{sec:Resultados-de-Simulaciones}
-se muestran, comparan y analizan los resultados de evaluación del
-desempeño del ecualizador propuesto. Finalmente, en la Sección \ref{sec:Conclusiones}
-se muestran las conclusiones.
+El art�culo est� organizado como sigue, en la Secci�n \ref{sec:STE-no-lineal}
+se describe el ambiente de operaci�n, la estructura y el desarrollo
+matem�tico para el SE no lineal propuesto. En la Secci�n \ref{sec:Resultados-de-Simulaciones}
+se muestran, comparan y analizan los resultados de evaluaci�n del
+desempe�o del ecualizador propuesto. Finalmente, en la Secci�n \ref{sec:Conclusiones}
+se presentan las conclusiones.
 
 
 \section{Ecualizador espacial no lineal\label{sec:STE-no-lineal} }
 
-Se considera un sistema de comunicaciones inalámbrico que consta de
-una antena transmisora y de $N$ antenas receptoras, es decir, un
-sistema SIMO (\emph{Single Input Multiple Output}) donde cada antena
-receptora recibe una versión diferente de la señal transmitida. Para
-el sistema de comunicaciones se considerará un modelo de canal \emph{frequency
+Se considera un sistema de comunicaciones inal�mbrico de una antena
+transmisora y de $N$ antenas receptoras, es decir, un sistema SIMO
+(\emph{Single Input Multiple Output}) donde cada antena receptora
+recibe una versi�n diferente de la se�al transmitida. Para el sistema
+de comunicaciones se considerar� un modelo de canal \emph{frequency
 nonselective flat fading }con ruido aditivo\emph{. }
 
 Para representar los efectos del desvanecimiento introducidos por
-el canal, la señal transmitida se ve afectada por un factor multiplicativo
+el canal, la se�al transmitida se ve afectada por un factor multiplicativo
 como se muestra en \cite{Proakis2012} y \cite{Yang2009} y que se
-mantiene constante durante la duración o intervalo del símbolo; la
-señal también se ve afectada por el ruido del canal. Para este proyecto
-se evaluarán diferentes modelos de ruido cambiando su función de densidad
-de probabilidad, se utilizará ruido con distribución de probabilidad
-Normal o Gaussiana y también se evaluará el desempeño del ecualizador
-si el modelo del ruido tiene una distribución Gaussiana Generalizada
-\cite{Novey2010} variando el parámetro de forma. Tanto las funciones
+mantiene constante durante el intervalo del s�mbolo, adicionalmente
+la se�al tambi�n se ve afectada por el ruido del canal. Se analizar�n
+diferentes modelos de ruido cambiando su funci�n de densidad de probabilidad,
+se utilizar� ruido con distribuci�n de probabilidad Gaussiana Generalizada
+\cite{Novey2010} variando el par�metro de forma. Tanto las funciones
 del modelo del ruido como las funciones del modelo del \emph{fading
-}son funciones complejas y se asumen estadísticamente independientes
-de canal a canal e idénticamente distribuidas.
+}son funciones complejas y que se asumen estad�sticamente independientes
+de canal a canal e id�nticamente distribuidas.
 
-La descripción anterior del canal puede expresarse como 
+La descripci�n anterior del canal puede expresarse como 
 
 \begin{equation}
 y_{m}\left(n\right)=s\left(n\right)h_{m}+\eta_{m}\left(n\right);\ \ m=1,2,\dots,N
 \end{equation}
 
 
-donde $y_{m}\left(n\right)$ corresponde a la señal recibida en la
-antena $m$, $s\left(n\right)$ corresponde a la señal o símbolo transmitido,
+donde $y_{m}\left(n\right)$ corresponde a la se�al recibida en la
+antena $m$, $s\left(n\right)$ corresponde a la se�al o s�mbolo transmitido,
 $h_{m}$ corresponde a\emph{ }la ganancia introducida por el canal
 debido al desvanecimiento y $\eta_{m}\left(n\right)$ corresponde
-al ruido aditivo que afecta a la señal o símbolo transmitido.
+al ruido aditivo que afecta a la se�al o s�mbolo transmitido. Se decidi�
+utilizar un \emph{Symbol Spaced Equalizer} (SSE) para el SE desarrollado,
+es decir, cada s�mbolo est� representado �nicamente por una muestra. 
 
-El SE no lineal propuesto está compuesto por un arreglo de $N$ antenas
-receptoras donde cada una recibe una versión diferente de la señal
-transmitida y cada una de éstas señales es una entrada a un \textbf{Filtro
-Polinomial Cruzado} que procesará la información recibida y entregará
-una señal ecualizada que es utilizada para la detección de la información.
-
-El filtro propuesto basa su estructura en un filtro polinomial cuadrático
-causal, discreto, invariante con el tiempo y de orden $M$ que está
-descrito por medio de los primeros tres términos de la expansión en
-series de Volterra, el primer término de la expansión corresponde
-a un término de \emph{offset, }el segundo término hace referencia
-a los coeficientes de un filtro FIR lineal e invariante con el tiempo
-y el último término representa los coeficientes de un filtro cuadrático
-homogéneo. En \cite{Budura},\cite{CONTAN2010}, \cite{Alper1963}
-y \cite{Powers1985} proponen eliminar el término de \emph{offset}
-en el modelo de un filtro polinomial a la hora de determinar el kernel
-del filtro así como eliminarlo en la simulación. 
-
-Se decidió utilizar un \emph{Symbol Spaced Equalizer} (SSE) para el
-SE desarrollado, es decir, cada símbolo está representado únicamente
-por una muestra. 
+El SE no lineal est� compuesto por un arreglo de $N$ antenas receptoras
+donde cada una recibe una versi�n diferente de la se�al transmitida
+y cada una de �stas se�ales es una entrada a un \textbf{Filtro Polinomial
+Cruzado} que procesar� la informaci�n recibida y entregar� una se�al
+ecualizada utilizada para la detecci�n de la informaci�n. La estructura
+de este filtro est� basada en un filtro polinomial cuadr�tico causal,
+discreto, invariante con el tiempo y de orden $M$ que est� descrito
+por medio de los primeros tres t�rminos de la expansi�n en series
+de Volterra, el primer t�rmino de la expansi�n corresponde a un t�rmino
+de \emph{offset, }el segundo t�rmino hace referencia a los coeficientes
+de un filtro FIR lineal e invariante con el tiempo y el �ltimo t�rmino
+representa los coeficientes de un filtro cuadr�tico homog�neo. En
+\cite{Budura},\cite{CONTAN2010}, \cite{Alper1963} y \cite{Powers1985}
+proponen eliminar el t�rmino de \emph{offset} en el modelo de un filtro
+polinomial a la hora de determinar el kernel del filtro as� como eliminarlo
+en la simulaci�n. 
 
 El filtro polinomial cruzado consiste de un filtro lineal asociado
-a cada antena receptora del SE y un filtro cuadrático cruzado que
-recibe dos señales diferentes de las antenas y produce una nueva señal
-que será procesada. Las señales de salida tanto del filtro lineal
-como del filtro cuadrático cruzado serán sumadas para obtener una
-señal ecualizada. En general las señales recibidas en las antenas
-del SE son señales complejas, se utilizará el complejo conjugado de
-las señales cuando se multipliquen para ingresar al filtro polinomial
-cruzado. La estructura general del filtro propuesto se muestra en
-Fig. \ref{fig:EstructuraFiltroPolinomialCruzado}.
+a cada antena receptora del SE y un filtro cuadr�tico cruzado que
+recibe dos se�ales diferentes de las antenas y produce una nueva se�al
+resultado del producto de una de ellas conjugada con la otra sin conjugar.
+Las se�ales de salida tanto del filtro lineal como del filtro cuadr�tico
+cruzado ser�n sumadas para obtener una se�al ecualizada. La estructura
+general del filtro propuesto se muestra en Fig. \ref{fig:EstructuraFiltroPolinomialCruzado}.
 
-\begin{figure}[H]
+\begin{figure}
 \begin{centering}
-\includegraphics[width=0.5\columnwidth]{\string"../../Desktop/ArticuloTesisMSc/img/Estructura Filtro Polinomial Cruzado\string".pdf}
+\includegraphics[width=0.3\paperwidth]{\string"../../Desktop/ArticuloTesisMSc/img/Estructura Filtro Polinomial Cruzado\string".pdf}
 \par\end{centering}
 
 \protect\caption{\label{fig:EstructuraFiltroPolinomialCruzado}Estructura detallada
 del SE propuesto, que consiste un arreglo de filtros lineales asociados
-a cada una de las antenas y un filtro cuadrático cruzado que recibe
-información de dos antenas diferentes y entrega una señal filtrada
-de esta información. }
+a cada una de las antenas y un filtro cuadr�tico cruzado que recibe
+informaci�n de dos antenas diferentes y entrega una se�al filtrada
+de esta informaci�n. }
 \end{figure}
 
 
 A partir de la Fig. \ref{fig:EstructuraFiltroPolinomialCruzado} se
-puede determinar la expresión matemática que describe completamente
-el SE propuesto, para simplificar la notación y como se dijo anteriormente
-sólo se trabajará con señales en el instante de tiempo $n$, $y_{m}$
-se utilizará para denotar las señal $y_{m}\left(n\right)$
-
-\begin{equation}
-\begin{split}
-y_{eq}&=y_{1}w_{1}+y_{2}w_{2}+\cdots+y_{N}w_{N}+\left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)w_{1,2}\\
-&+\cdots+\left(y_{1}y_{N}^{*}-h_{1}h_{N}^{*}\right)w_{1,N}+\cdots\\
-&+\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)w_{N-1,N}
-\end{split}
-\end{equation}
-
-lque puede reescribirse como
+puede determinar la expresi�n matem�tica que describe completamente
+el SE propuesto, para simplificar la notaci�n y como se dijo anteriormente
+s�lo se trabajar� con se�ales en el instante de tiempo $n$, $y_{m}$
+se utilizar� para denotar las se�al $y_{m}\left(n\right)$
 
 \begin{equation}
 y_{eq}=\sum_{m=1}^{N}y_{k}w_{k}+\sum_{m=1}^{N-1}\sum_{n=m+1}^{N}\left(y_{m}y_{n}^{*}-h_{m}h_{n}^{*}\right)w_{m,n}
 \end{equation}
 
 
-De la expresión anterior se concluye que el número de señales que
-se generan con información adicional en el SE está determinado por
+De la expresi�n anterior se concluye que el n�mero de se�ales que
+se generan con informaci�n adicional en el SE est� determinado por
 la combinatoria{\tiny{} $\dbinom{N}{2}$}.
 
-Utilizando notación vectorial para expresar la señal de salida $y_{eq}$
+Utilizando notaci�n vectorial para expresar la se�al de salida $y_{eq}$
 se tiene que
 
 \begin{equation}
@@ -237,41 +201,38 @@ donde
 
 \begin{equation}
 \begin{split}
-\mathbf{y} &= \left[y_{1}\ \ \ y_{2}\ \dots\ y_{N}\ \ \ y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\ \cdots\right.\\ 
-&\left.y_{1}y_{N}^{*}-h_{1}h_{N}^{*}\ \dots\ y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right]^{T}
+\mathbf{y} &= \left[y_{1}\ \ \ y_{2}\ \dots\ y_{N}\ \ \ y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\ \cdots\  y_{1}y_{N}^{*}-h_{1}h_{N}^{*}\ \dots\ y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right]^{T}
 \end{split}
 \end{equation}
 
 y
 
 \begin{equation}
-\mathbf{w=}\left[w_{1}\ \ \ w_{2}\ \dots\ w_{N}\ \ \ w_{1,2}\ \dots w_{1,N}\dots w_{N-1,N}\right]^{T}
+\mathbf{w=}\left[w_{1}\ \ \ w_{2}\ \dots\ w_{N}\ \ \ w_{1,2}\ \dots w_{1,N}\dots w_{N-1,N}\right]^{T}.
 \end{equation}
 
 
-ambos vectores tienen dimensión {\tiny{}$\left[\left(N+\dbinom{N}{2}\right)\textnormal{x}1\right]$}. 
-
-Con la estructura y representación matemática de un SE no lineal mostradas
-anteriormente, se debe determinar los coeficientes óptimos de cada
-uno de los filtros que componen el sistema. Se propone entonces realizar
-una formulación MMSE (\emph{Minimum Mean Square Error}), que busca
-estimar un vector de coeficientes $\mathbf{w}$ óptimo que minimice
-la estimación del MSE, es decir encontrar un vector de coeficientes
-que minimice la siguiente expresión
+Con la estructura y representaci�n matem�tica del SE no lineal propuesto,
+se debe determinar los coeficientes �ptimos de cada uno de los filtros
+que componen el sistema. Para esto se realiza una formulaci�n MMSE
+(\emph{Minimum Mean Square Error}), que busca estimar un vector de
+coeficientes $\mathbf{w}$ �ptimo que minimice la estimaci�n del MSE,
+es decir encontrar un vector de coeficientes que minimice la siguiente
+expresi�n
 
 \begin{equation}
 E\left\{ e^{2}\right\} =E\left\{ \left(s-\mathbf{y{}^{T}w}\right)^{2}\right\} 
 \end{equation}
 
 
-donde $s$ es la señal de respuesta deseada del sistema, esta información
+donde $s$ es la se�al de respuesta deseada del sistema, esta informaci�n
 se supone conocida por el emisor y receptor del sistema de comunicaciones,
-por lo que es utilizada como señal de entrenamiento del ecualizador
+por lo que es utilizada como se�al de entrenamiento del ecualizador
 antes de que este entre a funcionar en modo directo. 
 
-El vector de coeficientes que garantiza la minimización de la función
-de costo se deriva de la expresión anterior igualando la derivada
-a cero y despejando el vector de coeficientes óptimos que está dado
+El vector de coeficientes que garantiza la minimizaci�n de la funci�n
+de costo se deriva de la expresi�n anterior igualando la derivada
+a cero y despejando el vector de coeficientes �ptimos que est� dado
 por
 
 \begin{equation}
@@ -283,8 +244,8 @@ donde $\mathbf{C_{yy}}$ corresponde al valor esperado de la matriz
 obtenida del producto entre el vector $\mathbf{y}$ definido anteriormente
 con $\mathbf{y^{T}}$ y $\mathbf{P}$ que es un vector columna que
 corresponde al valor esperado del vector resultante del producto entre
-la señal de respuesta deseada $s$ y el vector $\mathbf{y}$, tanto
-$\mathbf{C_{yy}}$ y $\mathbf{P}$ están definidos como sigue
+la se�al de respuesta deseada $s$ y el vector $\mathbf{y}$, tanto
+$\mathbf{C_{yy}}$ y $\mathbf{P}$ est�n definidos como sigue
 
 \begin{equation}
 \mathbf{C_{yy}=}E\left\{ \mathbf{yy{}^{T}}\right\} 
@@ -298,42 +259,14 @@ y
 \end{equation}
 
 
-$ $En las ecuaciones \ref{eq:10} y \ref{eq:P} se definen explicitamente
-la matriz $\mathbf{C_{yy}}$ y el vector $\mathbf{P}$ respectivamente
-
-{\small{}}
-\begin{figure*}[t]
-{\small{}
-\begin{equation}
-\mathbf{C_{yy}=}E\left\{ \left[\begin{array}{ccccc}
-\left|y_{1}\right|^{2} & \cdots & y_{1}y_{N}^{*} & \cdots & y_{1}\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)^{*}\\
-\vdots & \ddots & \vdots & \ddots & \vdots\\
-y_{N}y_{1}^{*} & \cdots & \left|y_{N}\right|^{2} & \cdots & y_{N}\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)^{*}\\
-\left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)y_{1}^{*} & \cdots & \left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)y_{N}^{*} & \cdots & \left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)^{*}\\
-\vdots & \ddots & \vdots & \ddots & \vdots\\
-\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)y_{1}^{*} & \cdots & \left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)y_{N}^{*} & \cdots & \left|\left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)\right|^{2}
-\end{array}\right]\right\} \label{eq:10}
-\end{equation}
-}
-\end{figure*}
-{\small \par}
-
-\begin{equation}
-\label{eq:P}
-\begin{split}
-\mathbf{P}&=E\left\{ \left[sy_{1}\cdots sy_{N}\ s\left(y_{1}y_{2}^{*}-h_{1}h_{2}^{*}\right)\right.\right.\\
-&\left.\left.\cdots s\left(y_{N-1}y_{N}^{*}-h_{N-1}h_{N}^{*}\right)\right]^{T}\right\} 
-\end{split}
-\end{equation}
-
-donde la martriz $\mathbf{C_{yy}}$ es de dimensión {\tiny{}$\left[\left(N+\left(\begin{array}{c}
+donde la martriz $\mathbf{C_{yy}}$ es de dimensi�n {\tiny{}$\left[\left(N+\left(\begin{array}{c}
 N\\
 2
 \end{array}\right)\right)\textnormal{x}\left(N+\left(\begin{array}{c}
 N\\
 2
 \end{array}\right)\right)\right]$} mientras que los vectores $\mathbf{P}$ y $\mathbf{w_{opt}}$ son
-de dimensión {\tiny{}$\left[\left(N+\left(\begin{array}{c}
+de dimensi�n {\tiny{}$\left[\left(N+\left(\begin{array}{c}
 N\\
 2
 \end{array}\right)\right)\textnormal{x}1\right]$}.
@@ -341,56 +274,54 @@ N\\
 
 \subsection{Filtro Polinomial Cruzado Adaptativo}
 
-Ahora se considera el caso de sistemas no lineales y variantes con
-el tiempo\textbf{.} Para este tipo de sistema se propone desarrollar
-un filtro que procese la señal de entrada para que la señal de salida
-sea lo más cercana posible a la señal deseada, para esto el sistema
-adapta los coeficientes del filtro continuamente usando la señal de
-error como base de la actualización. Al igual que en el caso invariante
-con el tiempo, se desarrollará el planteamiento para un filtro polinomial
+Para extender los desarrollos anteriores al caso de sistemas variantes
+en el tiempo, se propone desarrollar un filtro polinomial cruzado
+que adapte sus coeficientes continuamente usando la se�al de error
+(diferencia entre la se�al de salida del filtro y la se�al deseada)
+como base de la actualizaci�n. Al igual que en el caso invariante
+con el tiempo, se desarrollar� el planteamiento para un filtro polinomial
 cruzado adaptativo extendiendo los desarrollos para filtros truncados
 de Volterra adaptativos como se muestran en \cite{Mathews2000}, \cite{Davila1987},
 \cite{Mathews1988} y \cite{Diniz2008}. 
 
-La salida del filtro $y_{eq}\left(n\right)$está dada por la siguiente
-expresión
+La salida del filtro $y_{eq}\left(n\right)$est� dada por la siguiente
+expresi�n
 
 \begin{equation}
 \begin{split}
-y_{eq}\left(n\right)&=\sum_{m=1}^{N}y_{k}\left(n\right)w_{k}\left(n\right)+\\
-&\sum_{m=1}^{N-1}\sum_{k=m+1}^{N}\left(y_{m}\left(n\right)y_{k}^{*}\left(n\right)-h_{m}\left(n\right)h_{k}^{*}\left(n\right)\right)w_{m,k}\left(n\right)
+y_{eq}\left(n\right)&=\sum_{m=1}^{N}y_{k}\left(n\right)w_{k}\left(n\right)+\sum_{m=1}^{N-1}\sum_{k=m+1}^{N}\left(y_{m}\left(n\right)y_{k}^{*}\left(n\right)-h_{m}\left(n\right)h_{k}^{*}\left(n\right)\right)w_{m,k}\left(n\right)
 \end{split}
 \end{equation}
 
-y la señal de error está dada por 
+y la se�al de error est� dada por 
 
 \begin{equation}
 e\left(n\right)=d\left(n\right)-y_{eq}\left(n\right)
 \end{equation}
 
 
-Se escogió el algoritmo \emph{Recursive Least Squares (RLS) }para
-la construcción del filtro adaptativo ya que una de sus ventajas mencionada
-en \cite{Diniz2008} y \cite{Mathews2000} es la rápida velocidad
+Se escogi� el algoritmo \emph{Recursive Least Squares (RLS) }para
+la construcci�n del filtro adaptativo ya que una de sus ventajas mencionada
+en \cite{Diniz2008} y \cite{Mathews2000} es la r�pida velocidad
 de convergencia, incluso en escenarios donde los valores propios de
-la matriz de autocorrelación del vector de entrada estén dispersos
+la matriz de autocorrelaci�n del vector de entrada est�n dispersos
 en gran medida. El objetivo del filtro adaptativo RLS es actualizar
-sus coeficientes de tal forma que su señal de salida $y_{eq}\left(n\right)$
-durante el periodo de observación concuerde con la señal deseada tan
-cerca como sea posible en el sentido de mínimos cuadrados.
+sus coeficientes de tal forma que su se�al de salida $y_{eq}\left(n\right)$
+durante el periodo de observaci�n concuerde con la se�al deseada tan
+cerca como sea posible en el sentido de m�nimos cuadrados.
 
-La función de costo está definida por 
+La funci�n de costo est� definida por 
 
 \begin{equation}
 J\left(n\right)=\sum_{k=1}^{n}\lambda^{n-k}\left(d\left(k\right)-y_{eq}\left(n\right)\right)^{2}
 \end{equation}
 
 
-donde el parámetro $\lambda$ es un factor de peso exponencial que
-controla la velocidad de convergencia del filtro adaptativo y está
+donde el par�metro $\lambda$ es un factor de peso exponencial que
+controla la velocidad de convergencia del filtro adaptativo y est�
 en el rango $0<\lambda\le1$.
 
-Para expresar la señal de salida del filtro utilizando notación vectorial
+Para expresar la se�al de salida del filtro utilizando notaci�n vectorial
 se tiene que
 
 \begin{equation}
@@ -402,8 +333,7 @@ donde
 
 \begin{equation}
 \begin{split}
-\mathbf{y}\left(n\right)&=\left[y_{1}\left(n\right)\ y_{2}\left(n\right)\ \dots\ y_{N}\left(n\right)\ y_{1}\left(n\right)y_{2}^{*}\left(n\right)-h_{1}h_{2}^{*}\ \dots\right.\\
-&\left.y_{1}\left(n\right)y_{N}^{*}\left(n\right)-h_{1}h_{N}^{*}\dots y_{N-1}\left(n\right)y_{N}^{*}\left(n\right)-h_{N-1}h_{N}^{*}\right]^{T}
+\mathbf{y}\left(n\right)&=\left[y_{1}\left(n\right)\ y_{2}\left(n\right)\ \dots\ y_{N}\left(n\right)\ y_{1}\left(n\right)y_{2}^{*}\left(n\right)-h_{1}h_{2}^{*}\ \dots\right.\left.y_{1}\left(n\right)y_{N}^{*}\left(n\right)-h_{1}h_{N}^{*}\dots y_{N-1}\left(n\right)y_{N}^{*}\left(n\right)-h_{N-1}h_{N}^{*}\right]^{T}
 \end{split}
 \end{equation}
 
@@ -411,16 +341,15 @@ y
 
 \begin{equation}
 \begin{split}
-\mathbf{w}\left(n\right)&=\left[w_{1}\left(n\right)\ w_{2}\left(n\right)\ w_{3}\left(n\right)\ \dots\ w_{N}\left(n\right)\right.\\
-&\left.w_{1,2}\left(n\right)\ \dots w_{1,N}\left(n\right)\dots w_{N-1,N}\left(n\right)\right]^{T}
+\mathbf{w}\left(n\right)&=\left[w_{1}\left(n\right)\ w_{2}\left(n\right)\ w_{3}\left(n\right)\ \dots\ w_{N}\left(n\right)\right.\left.w_{1,2}\left(n\right)\ \dots w_{1,N}\left(n\right)\dots w_{N-1,N}\left(n\right)\right]^{T}
 \end{split}
 \end{equation}
 
-La solución al problema de minimización puede encontrarse derivando
+La soluci�n al problema de minimizaci�n puede encontrarse derivando
 $J\left(n\right)$ con respecto al vector de coeficientes $\mathbf{w\left(n\right)}$,
 igualando las derivadas a cero y resolviendo las ecuaciones resultantes
-para obtener el vector de coeficientes óptimo, este está dado por
-la siguiente expresión 
+para obtener el vector de coeficientes �ptimo, este est� dado por
+la siguiente expresi�n 
 
 \[
 \mathbf{w\left(n\right)}=\mathbf{C^{-1}}\left(n\right)\mathbf{P}\left(n\right)
@@ -441,28 +370,23 @@ y
 \]
 
 
-que corresponden a la matriz de autocorrelación del vector de entrada
-ponderado exponencialmente y el vector de correlación cruzada entre
-el vector de entrada y la señal de respuesta deseada ponderado exponencialmente
-respectivamente. El algoritmo completo para el cálculo del filtro
+que corresponden a la matriz de autocorrelaci�n del vector de entrada
+ponderado exponencialmente y el vector de correlaci�n cruzada entre
+el vector de entrada y la se�al de respuesta deseada ponderado exponencialmente
+respectivamente. El algoritmo completo para el c�lculo del filtro
 adaptativo RLS es como se muestra en Algoritmo \ref{alg:AlgoritmoRLS}.
 
 \begin{algorithm}[H]
 \begin{itemize}
-\item \textbf{Inicialización}\\
-\textbf{
+\item \textbf{\footnotesize{}Inicializaci�n}\\
+\textbf{\footnotesize{}
 \[
-\mathbf{C^{-1}}\left(0\right)=\frac{1}{\delta}\mathbf{I}
+\mathbf{C^{-1}}\left(0\right)=\frac{1}{\delta}\mathbf{I},\ \mathbf{P}\left(0\right)=0,\ \mathbf{w}\left(0\right)=0
 \]
-\[
-\mathbf{P}\left(0\right)=0
-\]
-\[
-\mathbf{w}\left(0\right)=0
-\]
-}
-\item \textbf{Iteración principal}\\
-Para $n=1,2,3,\cdots$\\
+}{\footnotesize \par}
+\item \textbf{\footnotesize{}Iteraci�n principal}\\
+{\footnotesize{}Para $n=1,2,3,\cdots$}\\
+{\footnotesize{}
 \[
 \epsilon\left(n\right)=d\left(n\right)-\mathbf{y}^{T}\left(n\right)\mathbf{\mathbf{w}}\left(n-1\right)
 \]
@@ -478,9 +402,9 @@ Para $n=1,2,3,\cdots$\\
 \[
 e\left(n\right)=d\left(n\right)-\mathbf{y}^{T}\left(n\right)\mathbf{w}\left(n\right)
 \]
-
+}{\footnotesize \par}
 \end{itemize}
-Donde $\delta$ es una constante pequeña positiva. 
+{\footnotesize{}Donde $\delta$ es una constante peque�a positiva. }{\footnotesize \par}
 
 \protect\caption{\label{alg:AlgoritmoRLS}Algoritmo RLS para el SE propuesto que actualiza
 los coeficientes del filtro polinomial cruzado.}
@@ -488,205 +412,223 @@ los coeficientes del filtro polinomial cruzado.}
 
 
 
-\section{Análisis de resultados\label{sec:Resultados-de-Simulaciones}}
+\section{An�lisis de resultados\label{sec:Resultados-de-Simulaciones}}
 
-Para determinar el desempeño del SE propuesto se realizarán diferentes
-pruebas, estas involucraron cambiar la configuración del SE (variar
-el número de antenas receptoras) y las condiciones del canal como
-se mostrará a continuación. Asimismo para medir el desempeño del SE
-propuesto se tomó como referencia el desempeño de un SE lineal y a
-partir de esta comparación se evaluaron los resultados obtenidos. 
+Para determinar el desempe�o del SE propuesto se realizaron diferentes
+pruebas, estas involucraron cambiar la configuraci�n del SE (variar
+el n�mero de antenas receptoras) as� como las condiciones del canal.
+Se tom� como referencia el desempe�o de un SE lineal y se compar�
+con el desempe�o del SE propuesto para as� evaluar los resultados
+obtenidos. 
 
 Para las pruebas realizadas se utilizaron dos, tres, cuatro y cinco
-antenas para los dos SE (lineal y propuesto) y además se utilizó un
-canal \emph{frequency nonselective flat fading }con ruido\emph{ }aditivo\emph{.
-}Como se dijo anteriormente se decidió utilizar un \emph{Symbol Spaced
-Equalizer, }donde cada símbolo está representado con una muestra y
-se asume que los símbolos no tienen relación entre si. 
+antenas para los dos SE y adem�s se utiliz� un canal \emph{frequency
+nonselective flat fading }con ruido\emph{ }aditivo\emph{. }Se utiliz�
+un \emph{Symbol Spaced Equalizer, }donde los s�mbolos no tienen relaci�n
+entre si. 
 
 Las ganancias debido al desvanecimiento introducido por el canal se
-asumen que se conocen perfectamente y tienen una distribución Gaussiana
-con media cero y con varianza $\sigma_{h_{m}}^{2}$ idénticas y su
-suma está normalizada a uno, esto es
+asumen que se conocen perfectamente y tienen una distribuci�n Gaussiana
+con media cero y con varianza $\sigma_{h_{m}}^{2}$ id�nticas y su
+suma est� normalizada a uno.
 
-\[
-\sum_{m}E\left\{ \left|h_{m}\right|^{2}\right\} =1.
-\]
+Para el modelo del ruido aditivo en la primera prueba se utiliz� una
+distribuci�n Gaussiana ($\rho=2$) con media cero y con varianza $N_{0}/2$
+para generar la componente real y la componente imaginaria del ruido
+que son independientes entre si. Tanto las funciones del modelo del
+ruido como las funciones del modelo del \emph{fading }son funciones
+complejas y se asumen estad�sticamente independientes de canal a canal
+e id�nticamente distribuidas. Se realizaron simulaciones de Montecarlo
+para evaluar el desempe�o del SE y como criterio de desempe�o se decidi�
+utilizar la curva de tasa de error de bit (BER) para diferentes valores
+de relaci�n se�al a ruido por bit (SNR/bit).
 
-
-Para el modelo del ruido aditivo en la primera prueba se utilizó una
-distribución Gaussiana con media cero y con varianza $N_{0}/2$ para
-generar la componente real y la componente imaginaria del ruido que
-son independientes entre si. Como se dijo anteriormente tanto las
-funciones del modelo del ruido como las funciones del modelo del \emph{fading
-}son funciones complejas y se asumen estadísticamente independientes
-de canal a canal e idénticamente distribuidas.
-
-Con todas las consideraciones mostradas anteriormente, se realizaron
-simulaciones de Montecarlo para evaluar el desempeño del SE. Como
-criterios de desempeño se decidió utilizar basado en el estado del
-arte, la curva de tasa de error de bit (BER) para diferentes valores
-de relación señal a ruido por bit (SNR/bit) y el diagrama de constelación
-para la señal original recibida en cada antena, para la señal ecualizada
-usando un SE lineal y finalmente para la señal ecualizada usando el
-SE propuesto.
-
-El primer escenario de prueba consiste de un sistema compuesto por
-un canal \emph{frequency nonselective flat fading }y ruido aditivo
-con distribución de probabilidad Gaussiana y utilizando un esquema
-de modulación BPSK. Los resultados obtenidos para este escenario se
-muestran en la Fig. \ref{Figura51}, en esta se observa la tasa de
-error de bit (BER) para diferentes valores de relación señal a ruido
-por bit (SNR). 
+Adem�s se asume para esta prueba que la informaci�n viaja por un canal
+\emph{frequency nonselective flat fading} utilizando un esquema de
+modulaci�n BPSK. Los resultados obtenidos para este escenario se muestran
+en la Fig. \ref{BERGG20}, en esta se observa la tasa de error de
+bit (BER) para diferentes valores de relaci�n se�al a ruido por bit
+(SNR). 
 
 \begin{figure*}
-\centering \subfigure[]{\label{BERGG20}\includegraphics[width=0.48\textwidth]{\string"/Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG20\string".jpg}}\ \ \subfigure[]{\label{BERGG15}\includegraphics[width=0.48\textwidth]{\string"/Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG15\string".jpg}}\\
+\centering \subfigure[]{\label{BERGG20}\includegraphics[width=0.48\textwidth]{\string"/Users/carlosegn/Desktop/InformeFinal/Figuras/Spanish/BERGG20\string".jpg}}\ \ \subfigure[]{\label{BERGG15}\includegraphics[width=0.48\textwidth]{\string"/Users/carlosegn/Desktop/InformeFinal/Figuras/Spanish/BERGG15\string".jpg}}\\
 
-\centering\subfigure[]{\label{BERGG11}\includegraphics[width=0.5\textwidth]{\string"/Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG11\string".jpg}}
+\centering\subfigure[]{\label{BERGG11}\includegraphics[width=0.5\textwidth]{\string"/Users/carlosegn/Desktop/InformeFinal/Figuras/Spanish/BERGG11\string".jpg}}
 
-\protect\caption{\label{CURVAS_BER}Comparación del desempeño de un SE lineal con el
+\protect\caption{\label{CURVAS_BER}Comparaci�n del desempe�o de un SE lineal con el
 SE propuesto utilizando dos, tres, cuatro y cinco antenas. Como medida
-de desempeño se utiliza la tasa de error de bit (BER) para diferentes
-valores de relación señal a ruido por bit (SNR/bit). Para este escenario
-de prueba se utilizó un esquema de modulación BPSK, desvanecimiento
-con distribución de probabilidad Gaussiana con media cero y varianza
+de desempe�o se utiliza la tasa de error de bit (BER) para diferentes
+valores de relaci�n se�al a ruido por bit (SNR/bit). Para este escenario
+de prueba se utiliz� un esquema de modulaci�n BPSK, desvanecimiento
+con distribuci�n de probabilidad Gaussiana con media cero y varianza
 normalizada a uno y se probaron diferentes modelos de ruido aditivo,
-en \ref{BERGG20} se utilizó un modelo de ruido con distribución de
+en \ref{BERGG20} se utiliz� un modelo de ruido con distribuci�n de
 probabilidad Gaussiana con media cero y varianza $N_{0}/2$, en\ref{BERGG15}
-se utilizó un modelo de ruido con distribución de probabilidad Gaussiana
+se utiliz� un modelo de ruido con distribuci�n de probabilidad Gaussiana
 generalizada con factor de forma $\rho=1.5$ y finalmente en \ref{BERGG11}
-se utilizó un de ruido con distribución de probabilidad Gaussiana
+se utiliz� un de ruido con distribuci�n de probabilidad Gaussiana
 generalizada con factor de forma 1.}
 \end{figure*}
 
 
 De los resultados obtenidos se puede observar que el SE no lineal
 desarrollado es superior para todos los valores de SNR y de la misma
-forma para todas las configuraciones (número de antenas) utilizadas
-respecto al SE lineal. La razón fundamental para conseguir mejorar
-el desempeño del SE lineal es el aumento de la dimensionalidad del
+forma para todas las configuraciones (n�mero de antenas) utilizadas
+respecto al SE lineal. La raz�n fundamental para conseguir mejorar
+el desempe�o del SE lineal es el aumento de la dimensionalidad del
 espacio del receptor que se genera al momento de realizar los productos
-cruzados de las señales recibidas en cada antena, esta información
-permite realizar una mejor ecualización de la señal y esto conlleva
-a una correcta detección de la información transmitida originalmente.
-Con el SE no lineal propuesto, se consigue una mejora en promedio
-de 2 dB respecto al desempeño del SE lineal, una mejora considerable
-se observa cuando se utiliza un número mayor de antenas receptoras.
+cruzados de las se�ales recibidas en cada antena, esta informaci�n
+permite realizar una mejor ecualizaci�n de la se�al y esto conlleva
+a una correcta detecci�n de la informaci�n transmitida. Con el SE
+no lineal propuesto, se consigue una mejora en promedio de 2 dB respecto
+al desempe�o del SE lineal, el n�mero de antenas se relaciona directamente
+con el desempe�o del ecualizador.
 
 El siguiente aspecto a evaluar en el ecualizador propuesto fue el
-desempeño ante condiciones del canal mucho más agresivas que se representen
-de mejor manera ambientes de comunicaciones móviles reales. Para esto
-se decidió utilizar modelos de ruido aditivo que utilicen distribuciones
-de probabilidad diferentes a la Gaussiana, se eligió una distribución
-de probabilidad Gaussiana Generalizada y se varió el factor de forma
-$\rho$ desde el caso Gaussiano cuando $\rho=2$ hasta el caso en
-el que $\rho=1$ que se considera como el peor caso y que corresponde
-a una distribución de Laplace. En la Fig. \ref{GG15} se muestra la
-tasa de error de bit (BER) para diferentes valores de SNR, en general
-el desempeño se degrada en comparación al caso Gaussiano. Sin embargo,
-de la misma forma que ocurrió con el caso Gaussiano el desempeño del
-SE mostrado en este trabajo es superior al del caso de un SE lineal,
-se mantiene la ganancia en dB respecto al lineal que es de aproximadamente
-2 dB. Se observa igualmente que el desempeño con cinco antenas sigue
-siendo superior al resto de configuraciones. 
+desempe�o ante condiciones del canal mucho m�s agresivas que se representen
+de mejor manera ambientes de comunicaciones m�viles reales. Para esto
+se decidi� utilizar un modelo de ruido aditivo con una distribuci�n
+de probabilidad Gaussiana Generalizada con factor de forma $\rho=1.5$.
+En la Fig. \ref{BERGG15} se muestra la tasa de error de bit (BER)
+para diferentes valores de SNR, en general el desempe�o se degrada
+en comparaci�n al caso Gaussiano. Sin embargo, de la misma forma que
+ocurri� con el caso Gaussiano el desempe�o del SE desarrollado en
+este trabajo es superior al del caso de un SE lineal, se mantiene
+la ganancia de aproximadamente 2 dB respecto al lineal. Se observa
+igualmente que el desempe�o con cinco antenas sigue siendo superior
+al resto de configuraciones. 
 
-Por otro parte en la Fig. \ref{GG11} se observa la curva de desempeño
-de BER vs SNR para un modelo de ruido con distribución Gaussiana Generalizada
-con un factor de forma $\rho=1.1$ cercano al peor caso que pueda
-considerarse. Evidentemente el desempeño en general es inferior a
+Finalmente en la Fig. \ref{BERGG11} se observa la curva de desempe�o
+BER vs SNR para un modelo de ruido con distribuci�n Gaussiana Generalizada
+con un factor de forma $\rho=1.1$, cercano al peor caso que considerado
+este trabajo. Evidentemente el desempe�o en general es inferior a
 los dos casos mostrados anteriormente, ya que para un valor de SNR
-dado su valor de BER es mayor lo que genera una detección incorrecta
-de la información. Sin embargo bajo estas condiciones la ganancia
-en dB respecto al ecualizador lineal es en promedio superior a los
-2 dB. Nuevamente el SE propuesto es superior en todas las diferentes
-configuraciones. 
+su valor de BER es mayor, lo que genera una detecci�n incorrecta de
+la informaci�n. Sin embargo bajo estas condiciones la ganancia en
+dB respecto al ecualizador lineal es en promedio superior a los 2
+dB. Nuevamente el SE propuesto es superior en todas las diferentes
+configuraciones y ante un n�mero mayor de antenas receptoras el desempe�o
+de ambos ecualizadores mejora significativamente.
 
-Por último se evaluó el desempeño del ecualizador para ambientes de
-comunicaciones móviles que cambian en el tiempo utilizando un filtro
-polinomial cruzado RLS con un factor de peso exponencial $\lambda=0.98$,
-nuevamente se asumió que se conocía los coeficientes que describen
-el modelo del canal y tienen las mismas características mencionadas
-anteriormente, media cero y varianza $\sigma_{h_{m}}^{2}$, asimismo
-el modelo del ruido tiene media cero y varianza unitaria, el esquema
-de modulación utilizado fue BPSK, en la Fig. \ref{Adaptativo} se
-muestran los resultados. Se puede observar la convergencia del ecualizador
-propuesto para diferentes valores de SNR y para diferentes condiciones
-de canal donde el modelo del ruido se hace cada vez más agresivo.
-Las Figs. \ref{Adaptativo_a}, \ref{Adaptativo_b} y \ref{Adaptativo_c}
-se muestran los resultados para un canal con modelo de ruido Gaussiano,
-con modelo de ruido con distribución Gaussiano Generalizado con factor
-de forma $\rho=1.5$ y con modelo de ruido con distribución Gaussiano
-Generalizado con factor de forma $\rho=1.1$, en las tres gráficas
-se observa que el desempeño se degrada a medida que las condiciones
-del canal se vuelven más agresivas. Estos resultados respaldan los
-obtenidos anteriormente donde también se mostraba que en general el
-desempeño del ecualizador formulado se mantienen o degradan levemente
-bajo diferentes condiciones de canal, lo que comprueba que el filtro
-adaptativo desarrollado tiene un buen desempeño. 
+Por �ltimo se evalu� el desempe�o y la convergencia de los coeficientes
+del ecualizador propuesto para ambientes de comunicaciones m�viles
+variantes en el tiempo utilizando un filtro polinomial cruzado RLS
+con un factor de peso exponencial $\lambda=0.98$, nuevamente se asumi�
+que se conoc�a los coeficientes que describen el modelo del canal
+y tienen las mismas caracter�sticas mencionadas anteriormente, asimismo
+el modelo del ruido tiene media cero y varianza unitaria y el esquema
+de modulaci�n escogido fue BPSK. En la Fig. \ref{Adaptativo} se puede
+observar la convergencia del ecualizador propuesto para diferentes
+valores de SNR y para diferentes condiciones de canal donde el modelo
+del ruido se hace cada vez m�s agresivo. Las Figs. \ref{Adaptativo_a},
+\ref{Adaptativo_b} y \ref{Adaptativo_c} se muestran los resultados
+para un canal con modelo de ruido Gaussiano, con modelo de ruido con
+distribuci�n Gaussiana Generalizada con factor de forma $\rho=1.5$
+y con modelo de ruido con distribuci�n Gaussiana Generalizatda con
+factor de forma $\rho=1.1$, en las tres gr�ficas se observa que el
+desempe�o se degrada a medida que las condiciones del canal se vuelven
+m�s agresivas. Estos resultados respaldan los obtenidos anteriormente
+donde tambi�n se mostraba que en general el desempe�o del SE propuesto
+se mantienen o degradan levemente bajo diferentes condiciones de canal,
+lo que comprueba que el filtro adaptativo desarrollado tiene un buen
+desempe�o. 
 
 \begin{figure*}
-\centering \subfigure[]{\label{Adaptativo_a}\includegraphics[width=0.48\textwidth]{\string"/Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/A20\string".jpg}}\ \ \subfigure[]{\label{Adaptativo_b}\includegraphics[width=0.48\textwidth]{\string"/Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/A15\string".jpg}}\\
+\centering \subfigure[]{\label{Adaptativo_a}\includegraphics[width=0.48\textwidth]{\string"/Users/carlosegn/Desktop/InformeFinal/Figuras/Spanish/A20\string".jpg}}\ \ \subfigure[]{\label{Adaptativo_b}\includegraphics[width=0.48\textwidth]{\string"/Users/carlosegn/Desktop/InformeFinal/Figuras/Spanish/A15\string".jpg}}\\
 
-\centering\subfigure[]{\label{Adaptativo_c}\includegraphics[width=0.49\textwidth]{\string"/Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/A11\string".jpg}}
+\centering\subfigure[]{\label{Adaptativo_c}\includegraphics[width=0.49\textwidth]{\string"/Users/carlosegn/Desktop/InformeFinal/Figuras/Spanish/A11\string".jpg}}
 
-\protect\caption{\label{Adaptativo}Curva de aprendizaje para el error cuadrático medio
-del ecualizador propuesto para una configuración de dos antenas receptoras
-y diferentes modelos de canal. En \ref{Adaptativo_a} se muestra la
-curva de aprendizaje para un modelo de ruido con distribución Gaussiana.
-En \ref{Adaptativo_b} se muestra la curva de aprendizaje para un
-modelo de ruido con distribución de probabilidad Gaussiana generalizada
-con factor de forma $\rho=1.5$. En \ref{Adaptativo_c} se muestra
-la curva de aprendizaje para un modelo de ruido con distribución de
-probabilidad Gaussiana generalizada con factor de forma $\rho=1.1$.}
+\protect\caption{\label{Adaptativo}Curva de aprendizaje para MSE del ecualizador propuesto
+para una configuraci�n de dos antenas receptoras y diferentes modelos
+de canal. En \ref{Adaptativo_a} se muestra la curva de aprendizaje
+para un modelo de ruido con distribuci�n Gaussiana. En \ref{Adaptativo_b}
+se muestra la curva de aprendizaje para un modelo de ruido con distribuci�n
+de probabilidad Gaussiana generalizada con $\rho=1.5$. En \ref{Adaptativo_c}
+se muestra la curva de aprendizaje para un modelo de ruido con distribuci�n
+de probabilidad Gaussiana generalizada con $\rho=1.1$.}
 \end{figure*}
 
 
 
 \section{Conclusiones\label{sec:Conclusiones}}
 
-En este trabajo se desarrolló un SE no lineal que utiliza un filtro
+En este trabajo se desarroll� un SE no lineal que utiliza un filtro
 polinomial cruzado cuya mayor virtud es la de aumentar la dimensionalidad
-del espacio del receptor a partir de las señales que se recibes originalmente
-en el arreglo de antenas. La señales generadas tienen las mismas características
-estadísticas de las señales recibidas y crece de manera exponencial
-en función del número de antenas que componen el ecualizador. A medida
-que se cuenta con mayor información el desempeño del ecualizador mejora
-respecto al caso del ecualizador lineal. 
+del espacio del receptor a partir de las se�ales que se recibe originalmente
+en el arreglo de antenas. La se�ales generadas tienen las mismas caracter�sticas
+estad�sticas de las se�ales recibidas y el n�mero de estas crece de
+manera exponencial en funci�n del n�mero de antenas que componen el
+ecualizador. A medida que se cuenta con mayor informaci�n el desempe�o
+del ecualizador mejora respecto al caso del ecualizador lineal. 
 
 Con los resultados obtenidos se demuestra que el ecualizador desarrollado
-tiene un desempeño superior respecto al ecualizador lineal en todos
-los ambientes evaluados, sin importar la configuración o número de
-antenas que conforman el ecualizador, diferentes valores de relación
-señal a ruido y si las condiciones del canal se vuelven más agresivas,
-haciéndolo más robusto. Las medidas de desempeño utilizadas permitieron
-corroborar que ante diferentes condiciones de canal, con modelos de
-ruido mucho más agresivos el ecualizador desarrollado mantenía su
-desempeño casi sin alterarse y de la misma manera continuaba siendo
-superior al del ecualizador lineal. Respecto al número de antenas
-receptoras del SE propuesto, se concluye que entre mayor sea el número
-el ecualizador presenta un mejor desempeño y esto es debido a que
-se genera información adicional que incrementa en función del número
-de antenas, permitiendo de esta manera una mejor ecualización de la
-señal y garantizando de esta manera una correcta detección de la información
-transmitida originalmente. Estos resultados soportan los desarrollos
-teóricos realizados para este proyecto. 
+tiene un desempe�o superior respecto al ecualizador lineal en todos
+los ambientes evaluados, sin importar el n�mero de antenas que conforman
+el ecualizador, diferentes valores de relaci�n se�al a ruido y si
+las condiciones del canal se vuelven m�s agresivas, haci�ndolo m�s
+robusto. Las medidas de desempe�o utilizadas permitieron corroborar
+que ante diferentes condiciones de canal, con modelos de ruido mucho
+m�s agresivos el ecualizador desarrollado manten�a su desempe�o casi
+sin alterarse y de la misma manera continuaba siendo superior al del
+ecualizador lineal. Respecto al n�mero de antenas receptoras del SE
+propuesto, se concluye que entre mayor sea el n�mero el ecualizador
+presenta un mejor desempe�o y esto es debido a que se genera informaci�n
+adicional que incrementa en funci�n del n�mero de antenas garantizando
+una correcta detecci�n de la informaci�n transmitida originalmente.
+Estos resultados soportan los desarrollos te�ricos realizados para
+este trabajo. 
 
-Finalmente, se demostró convergencia del ecualizador propuesto ante
-sistemas de comunicaciones que varían lentamente con el tiempo y este
-debe adaptarse a las condiciones del canal para que la señal de error
-sea la mínima y su desempeño sea adecuado, de igual manera cómo sucedió
-en el caso cerrado, su desempeño se mantiene prácticamente igual a
-medida que las condiciones del canal se vuelven más agresivas.
+Finalmente, se demostr� convergencia del ecualizador propuesto ante
+sistemas de comunicaciones que var�an lentamente con el tiempo y este
+debe adaptarse a las condiciones del canal para que la se�al de error
+sea la m�nima y su desempe�o sea adecuado, de igual manera c�mo sucedi�
+en el caso cerrado, su desempe�o se mantiene pr�cticamente igual a
+medida que las condiciones del canal se vuelven m�s agresivas.
 
-Los desarrollos anteriores pueden extenderse para formular un \emph{Fractionally
-Spaced Equalizer }donde cada símbolo está representado por más de
-una muestra y estas muestras tienen relación entre sí, ya que pertenecen
-al mismo símbolo. Como se mostró en este trabajo a medida que la información
-disponible en el ecualizador su desempeño mejora, razón por la cual
-al tener disponible mayor número de información se puede conseguir
-que su desempeño sea aun mejor. 
+{\tiny{}\bibliographystyle{apacite}
+\bibliography{\string"/Users/carlosegn/Desktop/InformeFinal/References\string"}
+}{\tiny \par}
 
-\bibliographystyle{apacite}
-\bibliography{\string"/Users/carlosegn/Desktop/Informe Final/References\string"}
+
+\section*{Autores}
+
+
+\subsection*{Carlos Eduardo Guevara Nichoy}
+
+\selectlanguage{spanish}%
+\textbf{Carlos E. Guevara N.} recibi� el t�tulo de B.S. en Ingenier�a
+Electr�nica y el t�tulo de M.Sc en Ingenier�a Electr�nica de la Pontificia
+Universidad Javeriana, Bogot� D.C., Colombia en el a�o 2012 y 2014
+respectivamente. Sus intereses de investigaci�n se encuentran en el
+an�lisis y tratamiento de se�ales, redes de telecomunicaciones y en
+el desarrollo web y m�vil. Se ha desempe�ado como profesor de c�tedra
+desde el a�o 2013.
+\begin{itemize}
+\item \textbf{Correo de contacto: carlos.guevara@javeriana.edu.co}
+\item \textbf{Tel�fono de contacto: 3003600633}
+\item \textbf{Direcci�n: Calle 41 A \# 8-25 Edificio Bulevar 42 Apartamento
+516}
+\end{itemize}
+
+\subsection*{C�sar Leonardo Ni�o Barrera}
+
+\textbf{Cesar L. Nino.} recibi� el t�tulo de Ingeniero Electr�nico
+de la Pontifica Universidad Javeriana, Bogot� (96) y los t�tulos de
+M.Sc y Ph.D en Ingenier�a El�ctrica y Computaci�n de la Universidad
+de Delaware (01,03). Desde 2000 hasta 2009, Dr. Nino trabajo en el
+grupo de investigaci�n y desarrollo de DuPont en Wilmington, DE. Dr.
+Nino es consultor internacional en IT y director de la maestr�a en
+Ingenier�a Electr�nica de la Pontificia Universidad Javeriana, Bogot�,
+Colombia.
+\begin{itemize}
+\item \textbf{Correo de contacto: cesar.nino@javeriana.edu.co}
+\item \textbf{Tel�fono de contacto: 3208320 Extensi�n 5341}
+\item \textbf{Direcci�n: Cra. 7 No. 40-62 - Edificio Jos� Gabriel Maldonado}
+\end{itemize}
+
+\section*{Posibles evaluadores}
+\begin{itemize}
+\item \textbf{Prof. Javier Garc�a-Fr�as, University of Delaware, jgarcia@ee.udel.edu }
+\item \textbf{Prof. Sebasti�n Hoyos, Texas A\&M University, hoyos@ece.tamu.edu}\end{itemize}
 
 \end{document}

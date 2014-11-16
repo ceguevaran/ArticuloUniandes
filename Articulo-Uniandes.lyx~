@@ -2259,9 +2259,8 @@ name "sec:Conclusiones"
 
 \begin_layout Standard
 En este trabajo se desarrolló un SE no lineal que utiliza un filtro polinomial
- cruzado cuya mayor virtud es la de aumentar la dimensionalidad del espacio
- del receptor a partir de las señales que se recibe originalmente en el
- arreglo de antenas.
+ cruzado que logra aumentar la dimensionalidad del espacio del receptor
+ a partir de las señales que se recibe originalmente en el arreglo de antenas.
  La señales generadas tienen las mismas características estadísticas de
  las señales recibidas y el número de estas crece de manera exponencial
  en función del número de antenas que componen el ecualizador.
@@ -2300,6 +2299,8 @@ Finalmente, se demostró convergencia del ecualizador propuesto ante sistemas
 \end_layout
 
 \begin_layout Standard
+
+\size tiny
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "/Users/carlosegn/Desktop/Informe Final/References"
@@ -2311,12 +2312,10 @@ options "apacite"
 \end_layout
 
 \begin_layout Section*
-
 Autores
 \end_layout
 
 \begin_layout Subsection*
-
 Carlos Eduardo Guevara Nichoy
 \end_layout
 
@@ -2336,10 +2335,22 @@ Carlos E.
  Se ha desempeñado como profesor de cátedra desde el año 2013.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \series bold
 Correo de contacto: carlos.guevara@javeriana.edu.co
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Teléfono de contacto: 3003600633
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Dirección: Calle 41 A # 8-25 Edificio Bulevar 42 Apartamento 516
 \end_layout
 
 \begin_layout Subsection*
@@ -2364,10 +2375,42 @@ Cesar L.
  Electrónica de la Pontificia Universidad Javeriana, Bogotá, Colombia.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \series bold
 Correo de contacto: cesar.nino@javeriana.edu.co
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Teléfono de contacto: 3208320 Extensión 5341
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Dirección: Cra.
+ 7 No.
+ 40-62 - Edificio José Gabriel Maldonado
+\end_layout
+
+\begin_layout Section*
+Posibles evaluadores
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Prof.
+ Javier García-Frías, University of Delaware, jgarcia@ee.udel.edu 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Prof.
+ Sebastián Hoyos, Texas A&M University, hoyos@ece.tamu.edu
 \end_layout
 
 \end_body
