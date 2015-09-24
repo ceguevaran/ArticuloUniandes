@@ -4,7 +4,8 @@
 \begin_header
 \textclass article
 \begin_preamble
-\usepackage[english]{babel}
+\renewcommand{\figurename}{Figura}
+\usepackage[spanish]{babel}
 \usepackage{subfigure}
 \usepackage{amsmath}
 \usepackage{apacite}
@@ -221,8 +222,8 @@ end{abstract}
 
 \backslash
 keywordsSP{Arreglo de antenas, Canal con desvanecimiento, Comunicaciones
- móviles, Ecualizador espacial, Filtro adaptativo, Filtro de Volterra, 
- LMS, MMSE, RLS.}
+ móviles, Ecualizador espacial, Filtro adaptativo, Filtro de Volterra, MMSE,
+ RLS.}
 \end_layout
 
 \begin_layout Plain Layout
@@ -266,7 +267,7 @@ end{abstract}
 
 
 \backslash
-keywordsEN{Antenna arrays, Adaptive filter, Fading channel, LMS, MMSE, Mobile
+keywordsEN{Antenna arrays, Adaptive filter, Fading channel, MMSE, Mobile
  communications, RLS, Space equalizer, Volterra filter.}
 \end_layout
 
@@ -326,7 +327,7 @@ key "Paulraj1997a"
 
 \end_inset
 
-se explica uno de los problemas que se pueden presentar en la propagación
+ se explica uno de los problemas que se pueden presentar en la propagación
  de señales en sistemas de comunicaciones móviles, el desvanecimiento o
  
 \emph on
@@ -387,12 +388,11 @@ key "Boccuzzi2008"
 \end_inset
 
  como las series de Volterra, ecualizadores lineales, filtrado adaptativo
- y técnicas de optimización permitirán el desarrollo y evaluación del SE
- propuesto.
+ y técnicas de optimización permiten el desarrollo y evaluación del SE propuesto.
  El ecualizador propuesto utiliza un filtro polinomial cruzado que es capaz
  de generar información adicional a partir de la que se recibe originalmente
  en cada una de las antenas que componen el SE.
- El contar con mayor información permitirá conseguir una mejor ecualización
+ El contar con mayor información permite conseguir una mejor ecualización
  de la señal y por ende una detección fiel de la información transmitida
  originalmente.
 \end_layout
@@ -449,7 +449,7 @@ Single Input Multiple Output
 \emph default
 ) donde cada antena receptora recibe una versión diferente de la señal transmiti
 da.
- Para el sistema de comunicaciones se considerará un modelo de canal 
+ Para el sistema de comunicaciones se utiliza un modelo de canal 
 \emph on
 frequency nonselective flat fading 
 \emph default
@@ -478,9 +478,9 @@ key "Yang2009"
 
  y que se mantiene constante durante el intervalo del símbolo, adicionalmente
  la señal también se ve afectada por el ruido del canal.
- Se analizarán diferentes modelos de ruido cambiando su función de densidad
- de probabilidad, se utilizará ruido con distribución de probabilidad Gaussiana
- Generalizada 
+ Se analizan diferentes modelos de ruido cambiando su función de densidad
+ de probabilidad, se hace uso de modelos de ruido con distribución de probabilid
+ad Gaussiana Generalizada 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Novey2010"
@@ -692,7 +692,7 @@ reference "fig:EstructuraFiltroPolinomialCruzado"
 \begin_inset Formula $y_{m}$
 \end_inset
 
- se utilizará para denotar las señal 
+ se utilizará para denotar la señal 
 \begin_inset Formula $y_{m}\left(n\right)$
 \end_inset
 
@@ -900,21 +900,16 @@ donde
 \begin_inset Formula $\mathbf{C_{yy}}$
 \end_inset
 
- corresponde al valor esperado de la matriz obtenida del producto entre
- el vector 
+ corresponde a la matriz de autocorrelación del vector 
 \begin_inset Formula $\mathbf{y}$
 \end_inset
 
- definido anteriormente con 
-\begin_inset Formula $\mathbf{y^{T}}$
-\end_inset
-
- y 
+ definido anteriormente y 
 \begin_inset Formula $\mathbf{P}$
 \end_inset
 
- que es un vector columna que corresponde al valor esperado del vector resultant
-e del producto entre la señal de respuesta deseada 
+ que es un vector columna que corresponde al vector de correlación cruzada
+ entre la señal de respuesta deseada 
 \begin_inset Formula $s$
 \end_inset
 
@@ -922,45 +917,15 @@ e del producto entre la señal de respuesta deseada
 \begin_inset Formula $\mathbf{y}$
 \end_inset
 
-, tanto 
-\begin_inset Formula $\mathbf{C_{yy}}$
+, la matriz de autocorrelación está definida como 
+\begin_inset Formula $\mathbf{C_{yy}}=E\left\{ \mathbf{yy{}^{T}}\right\} $
 \end_inset
 
- y 
-\begin_inset Formula $\mathbf{P}$
+ y el vector de correlación cruzada como
+\begin_inset Formula $\mathbf{P}=E\left\{ s\mathbf{y}\right\} $
 \end_inset
 
- están definidos como sigue
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\mathbf{C_{yy}=}E\left\{ \mathbf{yy{}^{T}}\right\} 
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-y 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\mathbf{P=}E\left\{ s\mathbf{y}\right\} 
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-donde la martriz 
+, donde la martriz 
 \begin_inset Formula $\mathbf{C_{yy}}$
 \end_inset
 
@@ -1006,11 +971,11 @@ Filtro Polinomial Cruzado Adaptativo
 
 \begin_layout Standard
 Para extender los desarrollos anteriores al caso de sistemas variantes en
- el tiempo, se propone desarrollar un filtro polinomial cruzado que adapte
- sus coeficientes continuamente usando la señal de error (diferencia entre
- la señal de salida del filtro y la señal deseada) como base de la actualización.
- Al igual que en el caso invariante con el tiempo, se desarrollará el planteamie
-nto para un filtro polinomial cruzado adaptativo extendiendo los desarrollos
+ el tiempo, se planteó un filtro polinomial cruzado que adapte sus coeficientes
+ continuamente usando la señal de error (diferencia entre la señal de salida
+ del filtro y la señal deseada) como base de la actualización.
+ Al igual que en el caso invariante con el tiempo, se desarrolló el planteamient
+o para un filtro polinomial cruzado adaptativo extendiendo los desarrollos
  para filtros truncados de Volterra adaptativos como se muestran en 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1048,7 +1013,7 @@ La salida del filtro
 \begin_inset Formula $y_{eq}\left(n\right)$
 \end_inset
 
-está dada por la siguiente expresión
+ está dada por la siguiente expresión
 \end_layout
 
 \begin_layout Standard
@@ -1657,7 +1622,7 @@ Para determinar el desempeño del SE propuesto se realizaron diferentes pruebas,
 
 \begin_layout Standard
 Para las pruebas realizadas se utilizaron dos, tres, cuatro y cinco antenas
- para los dos SE y además se utilizó un canal 
+ para los dos SE, además se utilizó un canal 
 \emph on
 frequency nonselective flat fading 
 \emph default
@@ -1665,12 +1630,7 @@ con ruido
 \emph on
  
 \emph default
-aditivo
-\emph on
-.
- 
-\emph default
-Se utilizó un 
+aditivo y un 
 \emph on
 Symbol Spaced Equalizer, 
 \emph default
@@ -1711,14 +1671,7 @@ son funciones complejas y se asumen estadísticamente independientes de canal
  SE y como criterio de desempeño se decidió utilizar la curva de tasa de
  error de bit (BER) para diferentes valores de relación señal a ruido por
  bit (SNR/bit).
-\end_layout
-
-\begin_layout Standard
-Además se asume para esta prueba que la información viaja por un canal 
-\emph on
-frequency nonselective flat fading
-\emph default
- utilizando un esquema de modulación BPSK.
+ Se asumió para esta prueba un esquema de modulación BPSK.
  Los resultados obtenidos para este escenario se muestran en la Fig.
  
 \begin_inset CommandInset ref
@@ -1762,7 +1715,7 @@ name "BERGG20"
 
 
 \begin_inset Graphics
-	filename /Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG20.jpg
+	filename /Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG20AUA.jpg
 	display false
 	width 48text%
 
@@ -1794,7 +1747,7 @@ name "BERGG15"
 
 
 \begin_inset Graphics
-	filename /Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG15.jpg
+	filename /Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG15AUA.jpg
 	display false
 	width 48text%
 
@@ -1842,7 +1795,7 @@ name "BERGG11"
 
 
 \begin_inset Graphics
-	filename /Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG11.jpg
+	filename /Users/carlosegn/Desktop/Informe Final/Figuras/Spanish/BERGG11AUA.jpg
 	display false
 	width 50text%
 
@@ -2037,13 +1990,13 @@ reference "Adaptativo_c"
 
 \end_inset
 
- se muestran los resultados para un canal con modelo de ruido Gaussiano,
- con modelo de ruido con distribución Gaussiana Generalizada con factor
- de forma 
+ muestran los resultados para un canal con modelo de ruido Gaussiano, con
+ modelo de ruido con distribución Gaussiana Generalizada con factor de forma
+ 
 \begin_inset Formula $\rho=1.5$
 \end_inset
 
- y con modelo de ruido con distribución Gaussiana Generalizatda con factor
+ y con modelo de ruido con distribución Gaussiana Generalizada con factor
  de forma 
 \begin_inset Formula $\rho=1.1$
 \end_inset
@@ -2061,7 +2014,7 @@ reference "Adaptativo_c"
 \begin_inset Float figure
 wide true
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2261,7 +2214,7 @@ name "sec:Conclusiones"
 En este trabajo se desarrolló un SE no lineal que utiliza un filtro polinomial
  cruzado que logra aumentar la dimensionalidad del espacio del receptor
  a partir de las señales que se recibe originalmente en el arreglo de antenas.
- La señales generadas tienen las mismas características estadísticas de
+ Las señales generadas tienen las mismas características estadísticas de
  las señales recibidas y el número de estas crece de manera exponencial
  en función del número de antenas que componen el ecualizador.
  A medida que se cuenta con mayor información el desempeño del ecualizador
@@ -2270,11 +2223,11 @@ En este trabajo se desarrolló un SE no lineal que utiliza un filtro polinomial
 \end_layout
 
 \begin_layout Standard
-Con as medidas de desempeño utilizadas se demuestra que el ecualizador desarroll
-ado tiene un desempeño superior respecto al ecualizador lineal en todos
- los ambientes evaluados, sin importar el número de antenas que conforman
- el ecualizador, diferentes valores de relación señal a ruido o si las condicion
-es del canal se vuelven más agresivas.
+Con las medidas de desempeño utilizadas se demuestra que el ecualizador
+ desarrollado tiene un desempeño superior respecto al ecualizador lineal
+ en todos los ambientes evaluados, sin importar el número de antenas que
+ conforman el ecualizador, diferentes valores de relación señal a ruido
+ o si las condiciones del canal se vuelven más agresivas.
  Respecto al número de antenas receptoras del SE propuesto, se concluye
  que entre mayor sea el número el ecualizador presenta un mejor desempeño
  y esto es debido a que se genera información adicional que incrementa en
