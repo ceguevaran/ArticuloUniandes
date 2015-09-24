@@ -5,7 +5,7 @@
 \textclass article
 \begin_preamble
 \renewcommand{\figurename}{Figura}
-\usepackage[spanish]{babel}
+\usepackage[english,spanish]{babel}
 \usepackage{subfigure}
 \usepackage{amsmath}
 \usepackage{apacite}
@@ -269,6 +269,13 @@ end{abstract}
 \backslash
 keywordsEN{Antenna arrays, Adaptive filter, Fading channel, MMSE, Mobile
  communications, RLS, Space equalizer, Volterra filter.}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+selectlanguage{spanish}
 \end_layout
 
 \end_inset
